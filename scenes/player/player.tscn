@@ -248,6 +248,8 @@ animations = [{
 size = Vector2(27, 66)
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 25
 script = ExtResource("1_p47bc")
 move_speed = 160.0
 jump_speed = 435.0

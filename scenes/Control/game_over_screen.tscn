@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://bh5r26glk5pt0"]
+
+[ext_resource type="Script" uid="uid://bth15a0nt8xk5" path="res://scenes/Control/game_over_screen.gd" id="1_jgytq"]
+[ext_resource type="Texture2D" uid="uid://cjl5j7cci3452" path="res://assets/resources/images/game_over_screen.png" id="1_jtqe7"]
+
+[node name="GameOverScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jgytq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_jtqe7")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

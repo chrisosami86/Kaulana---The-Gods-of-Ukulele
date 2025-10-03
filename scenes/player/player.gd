@@ -2,6 +2,7 @@ extends  CharacterBody2D
 
 @export var move_speed: float
 @export var jump_speed:float
+@export var next_scene_path: String = "res://scenes/Control/game_over_screen.tscn"
 var max_health = 3
 var health = 3
 
@@ -79,7 +80,8 @@ func take_damage(amount: int):
 func die():
 	#animated_sprite.play("death")  # si tienes animación de muerte
 	queue_free()
-	set_process(false)
+	#set_process(false)
+	get_tree().change_scene_to_file(next_scene_path)
 	
 #Funcion de movimiento del personaje
 func move_x():
