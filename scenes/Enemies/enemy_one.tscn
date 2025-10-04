@@ -1,5 +1,6 @@
-[gd_scene load_steps=28 format=3 uid="uid://c443ythutsurv"]
+[gd_scene load_steps=29 format=3 uid="uid://c443ythutsurv"]
 
+[ext_resource type="Script" uid="uid://bph47sb0hdquu" path="res://scenes/Enemies/enemy_one.gd" id="1_373o5"]
 [ext_resource type="Texture2D" uid="uid://bpd3s30li1if" path="res://assets/sprites/enemies/enemy_1/damage 48x32.png" id="1_ydbxk"]
 [ext_resource type="Texture2D" uid="uid://b2c3tkytery3f" path="res://assets/sprites/enemies/enemy_1/die 48x32.png" id="2_373o5"]
 [ext_resource type="Texture2D" uid="uid://b2hepf7vkrbh8" path="res://assets/sprites/enemies/enemy_1/idle 48x32.png" id="3_yc5yn"]
@@ -184,18 +185,24 @@ size = Vector2(24, 17)
 [node name="EnemyOne" type="CharacterBody2D"]
 collision_layer = 8
 collision_mask = 5
+script = ExtResource("1_373o5")
+move_speed = 70.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kkoaj")
-animation = &"run"
+animation = &"die"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 3)
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_ydbxk")
 
 [node name="Hurtbox" type="Area2D" parent="."]
+visible = false
+collision_layer = 8
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, 2.5)
@@ -212,3 +219,6 @@ target_position = Vector2(-11, 8)
 [node name="IdleTimer" type="Timer" parent="."]
 wait_time = 2.5
 autostart = true
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]

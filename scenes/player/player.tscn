@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://ciiq0auj6fod4"]
+[gd_scene load_steps=40 format=3 uid="uid://ciiq0auj6fod4"]
 
 [ext_resource type="Texture2D" uid="uid://pe8peh2f8ogp" path="res://assets/sprites/player/idle.png" id="1_8afob"]
 [ext_resource type="Texture2D" uid="uid://bsa18r6lw5ebs" path="res://assets/sprites/player/jump-fall.png" id="1_dovo2"]
@@ -247,6 +247,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p47bc"]
 size = Vector2(27, 66)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0owmy"]
+size = Vector2(46, 44)
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 25
@@ -259,6 +262,8 @@ metadata/_edit_group_ = true
 sprite_frames = SubResource("SpriteFrames_5gtgg")
 animation = &"jump-attack"
 autoplay = "idle"
+frame = 1
+frame_progress = 0.809442
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(5.5, 0)
@@ -268,5 +273,14 @@ shape = SubResource("RectangleShape2D_p47bc")
 script = ExtResource("7_0owmy")
 
 [node name="AttackTimer" type="Timer" parent="."]
+
+[node name="AttackHitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox"]
+position = Vector2(45, -18)
+shape = SubResource("RectangleShape2D_0owmy")
+disabled = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

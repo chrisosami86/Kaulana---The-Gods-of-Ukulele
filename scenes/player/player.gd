@@ -5,10 +5,12 @@ extends  CharacterBody2D
 @export var next_scene_path: String = "res://scenes/Control/game_over_screen.tscn"
 var max_health = 3
 var health = 3
+@onready var collision_shape_2d: CollisionShape2D = $AttackHitbox/CollisionShape2D
 
 #Referencia al nodo de animacion para poder
 #ejecutar sus metodos como reproducir animación, etc
 @onready var animated_sprite = $AnimatedSprite2D
+
 
 #Bandera para verificar hacia donde esta mirando
 #el personaje
@@ -62,9 +64,11 @@ func handle_attack():
 	if Input.is_action_just_pressed("attack") and not is_attacking:
 		if not is_on_floor():
 			is_attacking = true
+			collision_shape_2d.disabled = false
 			animated_sprite.play("jump-attack")
 		else :
 			is_attacking = true
+			collision_shape_2d.disabled = false
 			animated_sprite.play("attack")
 
 #Funcion de recibir daño
@@ -78,7 +82,7 @@ func take_damage(amount: int):
 		die()
 
 func die():
-	#animated_sprite.play("death")  # si tienes animación de muerte
+	#animated_sprite.play("death")
 	queue_free()
 	#set_process(false)
 	get_tree().change_scene_to_file(next_scene_path)
@@ -108,3 +112,4 @@ func jump(delta):
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite.animation == "attack" or animated_sprite.animation == "jump-attack":
 		is_attacking = false
+		collision_shape_2d.disabled = true
