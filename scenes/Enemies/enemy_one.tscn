@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://c443ythutsurv"]
+[gd_scene load_steps=28 format=3 uid="uid://c443ythutsurv"]
 
 [ext_resource type="Script" uid="uid://bph47sb0hdquu" path="res://scenes/Enemies/enemy_one.gd" id="1_373o5"]
 [ext_resource type="Texture2D" uid="uid://bpd3s30li1if" path="res://assets/sprites/enemies/enemy_1/damage 48x32.png" id="1_ydbxk"]
@@ -13,10 +13,6 @@ region = Rect2(0, 0, 48, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_nnjc2"]
 atlas = ExtResource("1_ydbxk")
 region = Rect2(96, 0, 48, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_utxgq"]
-atlas = ExtResource("2_373o5")
-region = Rect2(0, 0, 48, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ju7a7"]
 atlas = ExtResource("2_373o5")
@@ -101,15 +97,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_utxgq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_utxgq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_utxgq")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_ju7a7")
 }, {
 "duration": 1.0,
@@ -190,17 +177,15 @@ move_speed = 70.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kkoaj")
-animation = &"die"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 3)
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_ydbxk")
 
 [node name="Hurtbox" type="Area2D" parent="."]
-visible = false
 collision_layer = 8
 collision_mask = 4
 

@@ -35,13 +35,26 @@ func flip():
 
 func die():
 	animated_sprite_2d.play("die")
+	await animated_sprite_2d.animation_finished
 	queue_free()
 
 func take_damage():
+	if is_damage:
+		return
 	if health > 0:
-		health -= 1;
-		if (health <=0):
-			die()
+		var direction_wall_aux = direction_wall
+		direction_wall = 0
+		is_damage = true
+		health -= 1
+		animated_sprite_2d.play("damage")
+		await animated_sprite_2d.animation_finished
+		await get_tree().create_timer(0.2).timeout
+		direction_wall = direction_wall_aux
+		is_damage = false
+	if health <= 0:
+		direction_wall = 0;
+		die()
+
 
 func wall_detection():
 	if wall_ray.is_colliding():
@@ -55,6 +68,11 @@ func abyss_detection():
 		flip()
 
 func update_animation():
+	if is_damage:
+		return
+	if health <= 0:
+		return  
+	
 	if is_idle:
 		animated_sprite_2d.play("idle")
 	elif velocity.x != 0:
@@ -75,6 +93,4 @@ func _on_idle_timer_timeout() -> void:
 
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
-	is_damage = true
 	take_damage()
-	animated_sprite_2d.play("damage")

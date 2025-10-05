@@ -5,7 +5,10 @@ extends  CharacterBody2D
 @export var next_scene_path: String = "res://scenes/Control/game_over_screen.tscn"
 var max_health = 3
 var health = 3
-@onready var collision_shape_2d: CollisionShape2D = $AttackHitbox/CollisionShape2D
+
+#Referencia al nodo del area de ataque
+@onready var collision_attack: CollisionShape2D = $AttackHitbox/CollisionShape2D
+
 
 #Referencia al nodo de animacion para poder
 #ejecutar sus metodos como reproducir animación, etc
@@ -23,6 +26,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 #Bandera para verificar la acción de atacar
 var is_attacking = false
 
+var is_crouched = false
+
 func _ready():
 	add_to_group("player")
 	
@@ -33,6 +38,7 @@ func _physics_process(delta: float) -> void:
 	move_x()
 	flip()
 	jump(delta)
+	get_down()
 	update_animations()
 	move_and_slide()
 
@@ -45,6 +51,10 @@ func update_animations():
 			velocity.x = 0
 		return
 	
+	if is_crouched and is_on_floor():
+		animated_sprite.play("crouched")
+		return
+	
 	if not is_on_floor():
 		if velocity.y < 0:
 			animated_sprite.play("jump")
@@ -53,7 +63,7 @@ func update_animations():
 		return
 
 		
-	if velocity.x:
+	if velocity.x != 0:
 		animated_sprite.play("run")
 	else :
 		animated_sprite.play("idle")
@@ -62,14 +72,21 @@ func update_animations():
 #aun no cuenta con hitbox
 func handle_attack():
 	if Input.is_action_just_pressed("attack") and not is_attacking:
+		is_attacking = true
+		collision_attack.disabled = false
+		
 		if not is_on_floor():
-			is_attacking = true
-			collision_shape_2d.disabled = false
 			animated_sprite.play("jump-attack")
+		elif is_crouched:
+			animated_sprite.play("crouched-attack")
 		else :
-			is_attacking = true
-			collision_shape_2d.disabled = false
 			animated_sprite.play("attack")
+
+func get_down():
+	if Input.is_action_pressed("crouched") and is_on_floor() and not is_attacking:
+		is_crouched = true
+	else:
+		is_crouched = false
 
 #Funcion de recibir daño
 func take_damage(amount: int):
@@ -110,6 +127,6 @@ func jump(delta):
 #Funcion que emite que recibe una señal
 #cuando termina una animacion
 func _on_animated_sprite_2d_animation_finished() -> void:
-	if animated_sprite.animation == "attack" or animated_sprite.animation == "jump-attack":
+	if animated_sprite.animation == "attack" or animated_sprite.animation == "jump-attack" or animated_sprite.animation == "crouched-attack":
 		is_attacking = false
-		collision_shape_2d.disabled = true
+		collision_attack.disabled = true

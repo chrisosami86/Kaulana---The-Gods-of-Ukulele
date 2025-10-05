@@ -1,9 +1,11 @@
-[gd_scene load_steps=40 format=3 uid="uid://ciiq0auj6fod4"]
+[gd_scene load_steps=50 format=3 uid="uid://ciiq0auj6fod4"]
 
 [ext_resource type="Texture2D" uid="uid://pe8peh2f8ogp" path="res://assets/sprites/player/idle.png" id="1_8afob"]
 [ext_resource type="Texture2D" uid="uid://bsa18r6lw5ebs" path="res://assets/sprites/player/jump-fall.png" id="1_dovo2"]
 [ext_resource type="Script" uid="uid://crhjmlefdvjyl" path="res://scenes/player/player.gd" id="1_p47bc"]
 [ext_resource type="Texture2D" uid="uid://b6evrxgdaw0fv" path="res://assets/sprites/player/attack.png" id="2_lvxji"]
+[ext_resource type="Texture2D" uid="uid://553pv8ebls3g" path="res://assets/sprites/player/crouched.png" id="3_5gtgg"]
+[ext_resource type="Texture2D" uid="uid://clly2ndgsbg7h" path="res://assets/sprites/player/crouched-attack.png" id="4_h17s1"]
 [ext_resource type="Texture2D" uid="uid://c1frjyufeao70" path="res://assets/sprites/player/jump-attack.png" id="4_p47bc"]
 [ext_resource type="Texture2D" uid="uid://cid52a65ibin3" path="res://assets/sprites/player/run.png" id="6_75vfm"]
 [ext_resource type="Script" uid="uid://ben2n4n2jumso" path="res://scenes/player/camera_2d.gd" id="7_0owmy"]
@@ -23,6 +25,38 @@ region = Rect2(680, 0, 136, 67)
 [sub_resource type="AtlasTexture" id="AtlasTexture_fcs02"]
 atlas = ExtResource("2_lvxji")
 region = Rect2(816, 0, 136, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgqa7"]
+atlas = ExtResource("3_5gtgg")
+region = Rect2(0, 0, 150, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pk8ii"]
+atlas = ExtResource("3_5gtgg")
+region = Rect2(150, 0, 150, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mf0n"]
+atlas = ExtResource("3_5gtgg")
+region = Rect2(300, 0, 150, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hvnv"]
+atlas = ExtResource("3_5gtgg")
+region = Rect2(450, 0, 150, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbmj2"]
+atlas = ExtResource("4_h17s1")
+region = Rect2(0, 0, 150, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxw46"]
+atlas = ExtResource("4_h17s1")
+region = Rect2(150, 0, 150, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qxvo"]
+atlas = ExtResource("4_h17s1")
+region = Rect2(300, 0, 150, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5q8fn"]
+atlas = ExtResource("4_h17s1")
+region = Rect2(450, 0, 150, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_myrg7"]
 atlas = ExtResource("1_dovo2")
@@ -145,6 +179,40 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_lgqa7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pk8ii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mf0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hvnv")
+}],
+"loop": true,
+"name": &"crouched",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbmj2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxw46")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qxvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5q8fn")
+}],
+"loop": false,
+"name": &"crouched-attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_myrg7")
 }, {
 "duration": 1.0,
@@ -260,10 +328,8 @@ metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5gtgg")
-animation = &"jump-attack"
+animation = &"crouched-attack"
 autoplay = "idle"
-frame = 1
-frame_progress = 0.809442
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(5.5, 0)
