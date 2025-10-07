@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://ymvyw5wkv3fx"]
+
+[ext_resource type="Script" uid="uid://cyvgnxbcuqjub" path="res://scenes/items/heart_item.gd" id="1_jokir"]
+[ext_resource type="Texture2D" uid="uid://dceels4ki13ru" path="res://assets/sprites/items/heart.png" id="1_xgmx2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jokir"]
+atlas = ExtResource("1_xgmx2")
+region = Rect2(0, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1ak3"]
+atlas = ExtResource("1_xgmx2")
+region = Rect2(18, 0, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2jmqr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jokir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s1ak3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jokir"]
+size = Vector2(12, 13)
+
+[node name="HeartItem" type="RigidBody2D" groups=["i_heart"]]
+position = Vector2(1, 0)
+collision_layer = 16
+collision_mask = 3
+script = ExtResource("1_jokir")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2jmqr")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.205266
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_jokir")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://ciiq0auj6fod4"]
+[gd_scene load_steps=51 format=3 uid="uid://ciiq0auj6fod4"]
 
 [ext_resource type="Texture2D" uid="uid://pe8peh2f8ogp" path="res://assets/sprites/player/idle.png" id="1_8afob"]
 [ext_resource type="Texture2D" uid="uid://bsa18r6lw5ebs" path="res://assets/sprites/player/jump-fall.png" id="1_dovo2"]
@@ -318,7 +318,10 @@ size = Vector2(27, 66)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0owmy"]
 size = Vector2(46, 44)
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5gtgg"]
+size = Vector2(30, 68)
+
+[node name="Player" type="CharacterBody2D" groups=["i_heart"]]
 collision_layer = 2
 collision_mask = 25
 script = ExtResource("1_p47bc")
@@ -328,7 +331,7 @@ metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5gtgg")
-animation = &"crouched-attack"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -349,4 +352,13 @@ position = Vector2(45, -18)
 shape = SubResource("RectangleShape2D_0owmy")
 disabled = true
 
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 24
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(5, 0)
+shape = SubResource("RectangleShape2D_5gtgg")
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

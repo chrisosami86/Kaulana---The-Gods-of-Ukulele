@@ -130,3 +130,19 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite.animation == "attack" or animated_sprite.animation == "jump-attack" or animated_sprite.animation == "crouched-attack":
 		is_attacking = false
 		collision_attack.disabled = true
+
+
+
+
+
+func _on_hurt_box_body_entered(body: Node2D) -> void:
+	if body.is_in_group('i_heart'):
+		if health < 3:
+			health += 1
+			get_tree().current_scene.get_node("HUD").update_hearts(health, max_health)
+			body.queue_free()
+		else :
+			body.queue_free()
+			
+	if body.name == "EnemyOne":
+		take_damage(1)
