@@ -26,6 +26,8 @@ window/stretch/mode="canvas_items"
 [global_group]
 
 i_heart=""
+enemies=""
+player=""
 
 [input]
 

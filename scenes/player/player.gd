@@ -144,5 +144,5 @@ func _on_hurt_box_body_entered(body: Node2D) -> void:
 		else :
 			body.queue_free()
 			
-	if body.name == "EnemyOne":
+	if body.is_in_group('enemies'):
 		take_damage(1)
