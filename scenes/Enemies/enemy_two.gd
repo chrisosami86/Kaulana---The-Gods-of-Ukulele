@@ -20,7 +20,7 @@ func _physics_process(delta: float) -> void:
 
 func fly_towards_player(delta: float) -> void:
 	var direction = (player.global_position - global_position).normalized()
-	velocity = direction * speed	
+	velocity = direction * speed
 	move_and_slide()
 	
 	if abs(velocity.x) > 0.1:

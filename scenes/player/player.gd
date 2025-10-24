@@ -94,12 +94,15 @@ func take_damage(amount: int):
 	if health < 0:
 		health = 0
 	get_tree().current_scene.get_node("HUD").update_hearts(health, max_health)
+	print(amount) #Pruebas
+	print(health) #Pruebas
 	
 	if health == 0:
 		die()
 
 func die():
 	#animated_sprite.play("death")
+	print('El player ha muerto y cambia de escena')
 	queue_free()
 	#set_process(false)
 	get_tree().change_scene_to_file(next_scene_path)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=30 format=3 uid="uid://xry0mf4drtdk"]
 
 [ext_resource type="Script" uid="uid://c35f41baxr710" path="res://scenes/Enemies/enemy_two.gd" id="1_3n2te"]
-[ext_resource type="Texture2D" uid="uid://cbn42mx86j4sl" path="res://assets/sprites/enemies/enemy_2/bat_enemy.png" id="2_iphiw"]
+[ext_resource type="Texture2D" uid="uid://dv3ffdwxe0ayg" path="res://assets/sprites/enemies/enemy_2/bat_enemy.png" id="2_iphiw"]
 
 [sub_resource type="Animation" id="Animation_ljc0x"]
 length = 0.001
@@ -20,7 +20,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_nivbx"]
 resource_name = "damage"
-length = 0.2
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -28,10 +28,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [4, 5]
+"values": [9, 10, 11, 12, 13]
 }
 
 [sub_resource type="Animation" id="Animation_ivenk"]
@@ -47,7 +47,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [9, 10, 11, 12, 13, 14, 15, 16, 17]
+"values": [27, 28, 29, 30, 31, 32, 33, 34, 35]
 }
 
 [sub_resource type="Animation" id="Animation_ac4h7"]
@@ -69,7 +69,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_2l6hg"]
 resource_name = "idle"
-length = 0.2
+length = 0.1
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -78,10 +78,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [6, 7]
+"values": [18]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sub2n"]
@@ -99,6 +99,7 @@ animation = &"damage"
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_xs232"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ije7c"]
+graph_offset = Vector2(-59.9091, 49.6364)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_1gyo6")
 nodes/Animation/position = Vector2(80, 120)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_xs232")
@@ -187,8 +188,8 @@ script = ExtResource("1_3n2te")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_iphiw")
-hframes = 4
-vframes = 5
+hframes = 9
+vframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -199,7 +200,7 @@ autoplay = "idle"
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_g60qp")
 anim_player = NodePath("../AnimationPlayer")
-parameters/damage/TimeScale/scale = 1.0
+parameters/damage/TimeScale/scale = 1.5
 parameters/die/TimeScale/scale = 2.0
 parameters/fly/TimeScale/scale = 1.0
 parameters/idle/TimeScale/scale = 1.0

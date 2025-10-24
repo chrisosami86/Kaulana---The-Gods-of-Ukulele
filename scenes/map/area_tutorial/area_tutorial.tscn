@@ -15,7 +15,7 @@ script = ExtResource("1_ntp1g")
 [node name="SectionOne" parent="." instance=ExtResource("1_8fa6o")]
 
 [node name="Player" parent="." instance=ExtResource("1_1skj8")]
-position = Vector2(-79, 146)
+position = Vector2(12, 201)
 
 [node name="HUD" parent="." instance=ExtResource("4_0gb6d")]
 
@@ -29,7 +29,7 @@ position = Vector2(984, 313)
 position = Vector2(1032, 313)
 
 [node name="EnemyOne" parent="." instance=ExtResource("6_oag8l")]
-position = Vector2(607, 126)
+position = Vector2(599, 127)
 
 [node name="HeartItem" parent="." instance=ExtResource("7_1flni")]
 position = Vector2(1116, 226)
