@@ -25,10 +25,11 @@ var is_facing_right = true
 #el motor
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-#Bandera para verificar la acción de atacar
+#Banderas
 var is_attacking = false
-
 var is_crouched = false
+var is_alive = true
+var is_damaged = false
 
 func _ready():
 	add_to_group("player")
@@ -53,6 +54,11 @@ func update_animations():
 			velocity.x = 0
 		return
 	
+	if is_damaged:
+		velocity.x = 0
+		animated_sprite.play("damage")
+		return
+	
 	if is_crouched and is_on_floor():
 		animated_sprite.play("crouched")
 		return
@@ -63,6 +69,11 @@ func update_animations():
 		else:
 			animated_sprite.play("fall")
 		return
+	
+	if not is_alive:
+		animated_sprite.play("die")
+		return
+		
 
 		
 	if velocity.x != 0:
@@ -72,6 +83,8 @@ func update_animations():
 
 #funcion de ataque del personaje
 func handle_attack():
+	if not is_alive or is_damaged:
+		return
 	if Input.is_action_just_pressed("attack") and not is_attacking:
 		is_attacking = true
 		collision_attack.disabled = false
@@ -96,6 +109,8 @@ func handle_attack():
 			
 
 func get_down():
+	if not is_alive or is_damaged:
+		return
 	if Input.is_action_pressed("crouched") and is_on_floor() and not is_attacking:
 		is_crouched = true
 		collision_player.scale.y = 0.7
@@ -117,25 +132,24 @@ func get_down():
 
 #Funcion de recibir daño
 func take_damage(amount: int):
+	is_damaged = true
 	health -= amount
 	if health < 0:
 		health = 0
 	get_tree().current_scene.get_node("HUD").update_hearts(health, max_health)
-	print(amount) #Pruebas
-	print(health) #Pruebas
-	
-	if health == 0:
+		
+	if health <= 0:
 		die()
 
 func die():
-	#animated_sprite.play("death")
-	print('El player ha muerto y cambia de escena')
-	queue_free()
+	is_alive = false
 	#set_process(false)
-	get_tree().change_scene_to_file(next_scene_path)
+	
 	
 #Funcion de movimiento del personaje
 func move_x():
+	if not is_alive or is_damaged:
+		return
 	if (is_facing_right and velocity.x < 0) or (not is_facing_right and velocity.x > 0):
 		scale.x *= -1
 		is_facing_right = not is_facing_right
@@ -143,12 +157,16 @@ func move_x():
 #Funcion para rotar el nodo del personaje
 #segun su direccion
 func flip():
+	if not is_alive or is_damaged:
+		return
 	var input_axis = Input.get_axis("move_left","move_right")
 	velocity.x = input_axis * move_speed
 	
 
 #Funcion de Salto
 func jump(delta):
+	if not is_alive or is_damaged:
+		return
 	if(Input.is_action_just_pressed("jump") and is_on_floor()):
 		velocity.y = -jump_speed
 	if not is_on_floor():
@@ -160,6 +178,14 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite.animation == "attack" or animated_sprite.animation == "jump-attack" or animated_sprite.animation == "crouched-attack":
 		is_attacking = false
 		collision_attack.disabled = true
+	
+		
+	if animated_sprite.animation == 'die':
+		queue_free()
+		get_tree().change_scene_to_file(next_scene_path)
+	
+	if animated_sprite.animation == 'damage':
+		is_damaged = false
 
 
 
