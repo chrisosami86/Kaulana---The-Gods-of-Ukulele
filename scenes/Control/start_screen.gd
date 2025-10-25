@@ -1,6 +1,6 @@
 extends Control
 
-@export var next_scene_path: String = "res://scenes/map/area_tutorial/area_tutorial.tscn"
+@export var next_scene_path: String = "res://scenes/map/main.tscn"
 @export var start_actions: Array = ["ui_accept", "attack"]
 
 var started := false

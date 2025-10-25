@@ -1,8 +1,9 @@
 extends Node2D
 
+
 func _ready():
 	var player = $Player      # o el nombre exacto de tu nodo Player
-	var session = $SectionOne # o el nombre exacto de tu nodo SessionOne
+	var session = $CurrenLevel/Section1 # o el nombre exacto de tu nodo SessionOne
 
 	var cam: Camera2D = player.get_node("Camera2D")
 	var rect: Rect2 = session.get_camera_bounds_global()

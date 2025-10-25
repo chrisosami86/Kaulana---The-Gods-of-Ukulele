@@ -8,6 +8,8 @@ var health = 3
 
 #Referencia al nodo del area de ataque
 @onready var collision_attack: CollisionShape2D = $AttackHitbox/CollisionShape2D
+@onready var collision_player: CollisionShape2D = $CollisionShape2D
+@onready var collision_hurtbox: CollisionShape2D = $HurtBox/CollisionShape2D
 
 
 #Referencia al nodo de animacion para poder
@@ -69,7 +71,6 @@ func update_animations():
 		animated_sprite.play("idle")
 
 #funcion de ataque del personaje
-#aun no cuenta con hitbox
 func handle_attack():
 	if Input.is_action_just_pressed("attack") and not is_attacking:
 		is_attacking = true
@@ -77,16 +78,42 @@ func handle_attack():
 		
 		if not is_on_floor():
 			animated_sprite.play("jump-attack")
-		elif is_crouched:
+			collision_attack.position.y = -15
+			
+		elif is_on_floor() and is_crouched:
 			animated_sprite.play("crouched-attack")
+			collision_attack.position.y = 11
+			
+			collision_player.scale.y = 0.7
+			collision_player.position.y = 16
+			collision_hurtbox.scale.y = 0.7
+			collision_hurtbox.position.y = 14
+			
 		else :
 			animated_sprite.play("attack")
+			collision_attack.position.y = -15
+			
+			
 
 func get_down():
 	if Input.is_action_pressed("crouched") and is_on_floor() and not is_attacking:
 		is_crouched = true
+		collision_player.scale.y = 0.7
+		collision_player.position.y = 16
+		collision_hurtbox.scale.y = 0.7
+		collision_hurtbox.position.y = 14
+	elif Input.is_action_pressed("crouched") and is_on_floor() and is_attacking:
+		is_crouched = true
+		collision_player.scale.y = 0.7
+		collision_player.position.y = 16
+		collision_hurtbox.scale.y = 0.7
+		collision_hurtbox.position.y = 14
 	else:
 		is_crouched = false
+		collision_player.scale.y = 1
+		collision_player.position.y = 6.0
+		collision_hurtbox.position.y = 3.0
+		collision_hurtbox.scale.y = 1
 
 #Funcion de recibir daño
 func take_damage(amount: int):
