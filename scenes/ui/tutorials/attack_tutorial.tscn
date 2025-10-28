@@ -1,0 +1,63 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1cogfq3ut6jn"]
+
+[ext_resource type="Theme" uid="uid://dp2ii6kb76dkt" path="res://assets/resources/themes/tutorials_theme.tres" id="1_7ejwi"]
+[ext_resource type="Texture2D" uid="uid://nhsacsgoyvh" path="res://assets/sprites/UI/UI Dialogos y tutoriales/attack.png" id="2_y63lr"]
+
+[node name="AttackTutorial" type="CanvasLayer"]
+
+[node name="MainContainer" type="PanelContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.0
+offset_top = -109.5
+offset_right = 114.0
+offset_bottom = 109.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_7ejwi")
+
+[node name="MarginContainer" type="MarginContainer" parent="MainContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 5
+
+[node name="TitleLabel" type="Label" parent="MainContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+text = "Acción de Ataque"
+
+[node name="Img" type="TextureRect" parent="MainContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_y63lr")
+
+[node name="PanelContainer" type="PanelContainer" parent="MainContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="DescriptionLabel" type="Label" parent="MainContainer/MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Usa la tecla “4” del teclado numérico
+o el botón “X” en un mando de XBOX
+para atacar enemigos"
+
+[node name="Button" type="Button" parent="MainContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Continuar"

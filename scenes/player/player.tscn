@@ -445,10 +445,10 @@ jump_speed = 435.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5gtgg")
-animation = &"die"
+animation = &"idle"
 autoplay = "idle"
-frame = 9
-frame_progress = 0.859206
+frame = 4
+frame_progress = 0.670732
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)

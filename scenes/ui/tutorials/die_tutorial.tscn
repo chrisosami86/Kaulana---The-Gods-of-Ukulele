@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwhovxul0ximk"]
+
+[ext_resource type="Theme" uid="uid://dp2ii6kb76dkt" path="res://assets/resources/themes/tutorials_theme.tres" id="1_5e27l"]
+[ext_resource type="Texture2D" uid="uid://cb3k26awclx0u" path="res://assets/sprites/UI/UI Dialogos y tutoriales/die.png" id="2_5e27l"]
+
+[node name="DieTutorial" type="CanvasLayer"]
+
+[node name="MainContainer" type="PanelContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.0
+offset_top = -109.5
+offset_right = 114.0
+offset_bottom = 109.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_5e27l")
+
+[node name="MarginContainer" type="MarginContainer" parent="MainContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 8
+
+[node name="TitleLabel" type="Label" parent="MainContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+text = "Vida de Jugador"
+
+[node name="Img" type="TextureRect" parent="MainContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_5e27l")
+
+[node name="PanelContainer" type="PanelContainer" parent="MainContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="DescriptionLabel" type="Label" parent="MainContainer/MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Cuida tus corazones, si te quedas sin vida,
+puedes morir y perder la partida"
+
+[node name="Button" type="Button" parent="MainContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Continuar"

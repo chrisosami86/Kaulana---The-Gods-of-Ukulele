@@ -1,0 +1,79 @@
+[gd_resource type="Theme" load_steps=17 format=3 uid="uid://dp2ii6kb76dkt"]
+
+[ext_resource type="Texture2D" uid="uid://cbxnf7ic8n4kg" path="res://assets/sprites/UI/UI Dialogos y tutoriales/boton_dissabled.png" id="1_rqhxq"]
+[ext_resource type="Texture2D" uid="uid://m3b7vv7ywp0l" path="res://assets/sprites/UI/UI Dialogos y tutoriales/boton_focus.png" id="2_osavd"]
+[ext_resource type="Texture2D" uid="uid://bkdtfmnvi37vm" path="res://assets/sprites/UI/UI Dialogos y tutoriales/boton_hover.png" id="3_vtulk"]
+[ext_resource type="Texture2D" uid="uid://syjreulgpine" path="res://assets/sprites/UI/UI Dialogos y tutoriales/boton_normal.png" id="4_sl8nh"]
+[ext_resource type="Texture2D" uid="uid://ckeysdue00euw" path="res://assets/sprites/UI/UI Dialogos y tutoriales/boton_pressed.png" id="5_lp3n1"]
+[ext_resource type="FontFile" uid="uid://bbx3pcpjqpnt6" path="res://assets/resources/fonts/Athena-Regular (PERSONAL USE ONLY).ttf" id="6_0efxc"]
+[ext_resource type="FontFile" uid="uid://dkdcdpatdmu76" path="res://assets/resources/fonts/Nougat-ExtraBlack.ttf" id="6_osavd"]
+[ext_resource type="Texture2D" uid="uid://dha13t401v7e1" path="res://assets/sprites/UI/UI Dialogos y tutoriales/Banner.png" id="7_doy76"]
+[ext_resource type="Texture2D" uid="uid://84mpkpyuwaaq" path="res://assets/sprites/UI/UI Dialogos y tutoriales/Banner_interno.png" id="9_vtulk"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jd1y2"]
+texture = ExtResource("1_rqhxq")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wnvk0"]
+texture = ExtResource("2_osavd")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 22.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3cipe"]
+texture = ExtResource("3_vtulk")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_66f0r"]
+texture = ExtResource("4_sl8nh")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2nvjp"]
+texture = ExtResource("5_lp3n1")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rrk0t"]
+texture = ExtResource("7_doy76")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vtulk"]
+texture = ExtResource("9_vtulk")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[resource]
+Button/font_sizes/font_size = 9
+Button/styles/disabled = SubResource("StyleBoxTexture_jd1y2")
+Button/styles/focus = SubResource("StyleBoxTexture_wnvk0")
+Button/styles/hover = SubResource("StyleBoxTexture_3cipe")
+Button/styles/normal = SubResource("StyleBoxTexture_66f0r")
+Button/styles/pressed = SubResource("StyleBoxTexture_2nvjp")
+HeaderLarge/base_type = &"Label"
+HeaderLarge/colors/font_color = Color(0.207843, 0.921569, 0.831373, 1)
+HeaderLarge/colors/font_outline_color = Color(0.262745, 0.176471, 0.694118, 1)
+HeaderLarge/constants/outline_size = 11
+HeaderLarge/font_sizes/font_size = 25
+HeaderLarge/fonts/font = ExtResource("6_osavd")
+Label/font_sizes/font_size = 10
+Label/fonts/font = ExtResource("6_0efxc")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_rrk0t")
+PanelContainerVariant/base_type = &"PanelContainer"
+PanelContainerVariant/styles/panel = SubResource("StyleBoxTexture_vtulk")
