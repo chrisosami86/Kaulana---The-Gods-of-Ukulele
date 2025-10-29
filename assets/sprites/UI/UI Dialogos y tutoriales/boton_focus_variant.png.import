@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://do6bj8ta6t5pv"
-path="res://.godot/imported/start_screen.png-863561ba19d80d698d7fd25dd2a6590c.ctex"
+uid="uid://drigda07m2rnl"
+path="res://.godot/imported/boton_focus_variant.png-65e37462e22c9f15b1a50c13273fe741.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/resources/images/start_screen.png"
-dest_files=["res://.godot/imported/start_screen.png-863561ba19d80d698d7fd25dd2a6590c.ctex"]
+source_file="res://assets/sprites/UI/UI Dialogos y tutoriales/boton_focus_variant.png"
+dest_files=["res://.godot/imported/boton_focus_variant.png-65e37462e22c9f15b1a50c13273fe741.ctex"]
 
 [params]
 

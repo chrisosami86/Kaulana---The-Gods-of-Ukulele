@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=17 format=3 uid="uid://dp2ii6kb76dkt"]
+[gd_resource type="Theme" load_steps=19 format=3 uid="uid://dp2ii6kb76dkt"]
 
 [ext_resource type="Texture2D" uid="uid://cbxnf7ic8n4kg" path="res://assets/sprites/UI/UI Dialogos y tutoriales/boton_dissabled.png" id="1_rqhxq"]
 [ext_resource type="Texture2D" uid="uid://m3b7vv7ywp0l" path="res://assets/sprites/UI/UI Dialogos y tutoriales/boton_focus.png" id="2_osavd"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ckeysdue00euw" path="res://assets/sprites/UI/UI Dialogos y tutoriales/boton_pressed.png" id="5_lp3n1"]
 [ext_resource type="FontFile" uid="uid://bbx3pcpjqpnt6" path="res://assets/resources/fonts/Athena-Regular (PERSONAL USE ONLY).ttf" id="6_0efxc"]
 [ext_resource type="FontFile" uid="uid://dkdcdpatdmu76" path="res://assets/resources/fonts/Nougat-ExtraBlack.ttf" id="6_osavd"]
+[ext_resource type="Texture2D" uid="uid://w5xx2f3m2hdo" path="res://assets/sprites/UI/UI Dialogos y tutoriales/boton_normal_variant.png" id="6_sl8nh"]
 [ext_resource type="Texture2D" uid="uid://dha13t401v7e1" path="res://assets/sprites/UI/UI Dialogos y tutoriales/Banner.png" id="7_doy76"]
 [ext_resource type="Texture2D" uid="uid://84mpkpyuwaaq" path="res://assets/sprites/UI/UI Dialogos y tutoriales/Banner_interno.png" id="9_vtulk"]
 
@@ -45,6 +46,13 @@ texture_margin_top = 10.0
 texture_margin_right = 10.0
 texture_margin_bottom = 20.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lp3n1"]
+texture = ExtResource("6_sl8nh")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rrk0t"]
 texture = ExtResource("7_doy76")
 texture_margin_left = 10.0
@@ -66,6 +74,8 @@ Button/styles/focus = SubResource("StyleBoxTexture_wnvk0")
 Button/styles/hover = SubResource("StyleBoxTexture_3cipe")
 Button/styles/normal = SubResource("StyleBoxTexture_66f0r")
 Button/styles/pressed = SubResource("StyleBoxTexture_2nvjp")
+ButtonVariant/base_type = &"Button"
+ButtonVariant/styles/normal = SubResource("StyleBoxTexture_lp3n1")
 HeaderLarge/base_type = &"Label"
 HeaderLarge/colors/font_color = Color(0.207843, 0.921569, 0.831373, 1)
 HeaderLarge/colors/font_outline_color = Color(0.262745, 0.176471, 0.694118, 1)

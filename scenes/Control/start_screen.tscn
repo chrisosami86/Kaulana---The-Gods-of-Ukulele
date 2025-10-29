@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://vslyd3qfto5x"]
+[gd_scene load_steps=4 format=3 uid="uid://vslyd3qfto5x"]
 
-[ext_resource type="Texture2D" uid="uid://dm3fujrhw47ll" path="res://assets/resources/images/start_screen.png" id="1_sc7aa"]
+[ext_resource type="Texture2D" uid="uid://do6bj8ta6t5pv" path="res://assets/resources/images/start_screen.png" id="1_sc7aa"]
 [ext_resource type="Script" uid="uid://bjr37xi2wjog0" path="res://scenes/Control/start_screen.gd" id="1_v2l2y"]
+[ext_resource type="Theme" uid="uid://dp2ii6kb76dkt" path="res://assets/resources/themes/tutorials_theme.tres" id="3_ryme0"]
 
 [node name="StartScreen" type="Control"]
 layout_mode = 3
@@ -19,6 +20,7 @@ offset_bottom = 40.0
 texture = ExtResource("1_sc7aa")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,3 +28,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("3_ryme0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="NewGameButton" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Nueva Partida"
+
+[node name="LoadButton" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Continuar"
+
+[node name="QuitButton" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Salir"
