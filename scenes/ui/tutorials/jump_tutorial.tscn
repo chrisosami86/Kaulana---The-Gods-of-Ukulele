@@ -48,6 +48,7 @@ texture = ExtResource("1_1t1bh")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_type_variation = &"PanelContainerVariant"
 
 [node name="DescriptionLabel" type="Label" parent="MainContainer/MarginContainer/VBoxContainer/PanelContainer"]
 layout_mode = 2

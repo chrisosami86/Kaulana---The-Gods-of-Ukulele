@@ -30,9 +30,18 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -177.0
+offset_top = -113.0
+offset_right = -85.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
 theme = ExtResource("3_ryme0")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
@@ -40,12 +49,15 @@ layout_mode = 2
 
 [node name="NewGameButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+theme_type_variation = &"ButtonVariant"
 text = "Nueva Partida"
 
 [node name="LoadButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+theme_type_variation = &"ButtonVariant"
 text = "Continuar"
 
 [node name="QuitButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+theme_type_variation = &"ButtonVariant"
 text = "Salir"

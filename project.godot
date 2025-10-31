@@ -12,8 +12,12 @@ config_version=5
 
 config/name="Kaulana_The_Gods_of_Ukulele"
 run/main_scene="uid://vslyd3qfto5x"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameState="*res://autoloads/game_state.gd"
 
 [display]
 
