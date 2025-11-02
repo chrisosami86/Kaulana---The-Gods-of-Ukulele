@@ -202,3 +202,11 @@ func _on_hurt_box_body_entered(body: Node2D) -> void:
 			
 	if body.is_in_group('enemies'):
 		take_damage(1)
+
+
+
+
+func _on_hurt_box_area_entered(area: Area2D) -> void:
+	if area.is_in_group("save_point"):
+		health = 3
+		get_tree().current_scene.get_node("HUD").update_hearts(health, max_health)

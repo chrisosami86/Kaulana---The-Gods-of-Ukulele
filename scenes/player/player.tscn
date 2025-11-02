@@ -469,12 +469,14 @@ shape = SubResource("RectangleShape2D_0owmy")
 disabled = true
 
 [node name="HurtBox" type="Area2D" parent="."]
+visibility_layer = 2
 collision_layer = 2
-collision_mask = 24
+collision_mask = 56
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_5gtgg")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

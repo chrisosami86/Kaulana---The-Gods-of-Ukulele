@@ -22,7 +22,7 @@ func mark_tutorial_shown(name: String) -> void:
 	"""
     Marca el tutorial 'name' como visto en save_data.
     No escribe a disco aquí (decide si guardar automáticamente o en checkpoints).
-    """
+	"""
 	save_data["tutorials_shown"][name] = true
 	
 	
@@ -37,7 +37,7 @@ func should_show_tutorial(name: String) -> bool:
 func set_checkpoint(scene_path: String, player_position: Vector2) -> void:
 	"""
     Actualiza el checkpoint en memoria. Opcionalmente llamar save_to_disk() después.
-    """
+	"""
 	save_data["scene_path"] = scene_path
 	save_data["player_position"] = player_position
 
@@ -52,23 +52,26 @@ func save_to_disk() -> void:
 	"""
     Escribe save_data a disk (user://savegame.json).
     Implementar con FileAccess + JSON en el momento que quieras.
-    """
+	"""
 	pass
 
 func load_from_disk() -> void:
 	"""
     Lee el archivo y lo carga en save_data si existe y es válido.
     Implementar con FileAccess + JSON; manejar versiones y fallos.
-    """
+	"""
 	pass
 
 func reset_save() -> void:
 	"""
     Pone save_data con valores por defecto (nuevo juego).
-    """
+	"""
 	save_data = {
 		"version": 1,
 		"scene_path": "",
 		"player_position": Vector2.ZERO,
 		"tutorials_shown": {}
 	}
+
+func saveData():
+	print('Partida guardada con exito')
