@@ -8,7 +8,13 @@ var save_data = {
 	"version": 1,
 	"scene_path": "",
 	"player_position": Vector2.ZERO,
-	"tutorials_shown": {}
+	"tutorials_shown": {
+		"attack": false,
+		"crounched": false,
+		"jump": false,
+		"health": false,
+		"die": false
+	}
 }
 
 # ---------- Inicialización ----------

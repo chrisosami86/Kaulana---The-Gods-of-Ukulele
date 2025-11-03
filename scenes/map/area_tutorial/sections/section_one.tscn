@@ -1,10 +1,15 @@
-[gd_scene load_steps=10 format=4 uid="uid://dgm20ufql7vsm"]
+[gd_scene load_steps=19 format=4 uid="uid://dgm20ufql7vsm"]
 
 [ext_resource type="Script" uid="uid://ckvnkns86v2kw" path="res://scenes/map/area_tutorial/sections/section_one.gd" id="1_kmclc"]
 [ext_resource type="Texture2D" uid="uid://blt44my2pyssf" path="res://assets/sprites/world/ground.png" id="1_uwo1q"]
 [ext_resource type="Texture2D" uid="uid://cxrkasni83uxe" path="res://assets/sprites/world/gorund2.png" id="3_6y5ly"]
 [ext_resource type="Texture2D" uid="uid://b0bfm0xeipjft" path="res://assets/sprites/world/spike_01.png" id="4_7ym6a"]
 [ext_resource type="PackedScene" uid="uid://da0dl6whuyhn6" path="res://scenes/world/save_point.tscn" id="6_7cvt7"]
+[ext_resource type="PackedScene" uid="uid://cotcr7xgfwbku" path="res://scenes/ui/tutorials/jump_tutorial.tscn" id="6_8uus7"]
+[ext_resource type="Script" uid="uid://b1anbhlxt35o7" path="res://scenes/map/area_tutorial/sections/trigger_tutorial.gd" id="6_gywth"]
+[ext_resource type="Script" uid="uid://dw0i4exvr0p08" path="res://scenes/map/area_tutorial/sections/trigger_attack_tutorial.gd" id="8_a5wda"]
+[ext_resource type="PackedScene" uid="uid://d1cogfq3ut6jn" path="res://scenes/ui/tutorials/attack_tutorial.tscn" id="9_y2yhm"]
+[ext_resource type="Script" uid="uid://dcpnphlb0gwid" path="res://scenes/map/area_tutorial/sections/transition_zone.gd" id="10_y2yhm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kmclc"]
 texture = ExtResource("1_uwo1q")
@@ -112,6 +117,16 @@ sources/0 = SubResource("TileSetAtlasSource_kmclc")
 sources/1 = SubResource("TileSetAtlasSource_7ym6a")
 sources/2 = SubResource("TileSetAtlasSource_5vrai")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_7cvt7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o7lat"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a5wda"]
+radius = 133.63383
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o7lat"]
+size = Vector2(20, 154)
+
 [node name="Section1" type="Node2D" groups=["sections"]]
 script = ExtResource("1_kmclc")
 camera_bounds = Rect2(-200, -600, 5376, 960)
@@ -124,6 +139,64 @@ tile_map_data = PackedByteArray("AAAAAAUAAAABAAAAAAABAAUAAAABAAAAAAACAAUAAAABAAA
 tile_set = SubResource("TileSet_nwers")
 
 [node name="SavePoint" parent="Middle" instance=ExtResource("6_7cvt7")]
-position = Vector2(4019.2974, 187)
+position = Vector2(4019.2974, 183)
+
+[node name="TriggerJumpTutorial" type="Area2D" parent="Middle"]
+collision_layer = 64
+collision_mask = 2
+script = ExtResource("6_gywth")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Middle/TriggerJumpTutorial"]
+position = Vector2(247.7102, 160)
+scale = Vector2(9.443565, 9.443565)
+shape = SubResource("CircleShape2D_7cvt7")
+
+[node name="JumpTutorial" parent="Middle" instance=ExtResource("6_8uus7")]
+
+[node name="TriggerAttackTutorial" type="Area2D" parent="Middle"]
+collision_layer = 64
+collision_mask = 2
+script = ExtResource("8_a5wda")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Middle/TriggerAttackTutorial"]
+position = Vector2(980.85236, 186)
+scale = Vector2(10.685389, 10.685389)
+shape = SubResource("CircleShape2D_o7lat")
+
+[node name="AttackTutorial" parent="Middle" instance=ExtResource("9_y2yhm")]
+visible = false
 
 [node name="Foreground" type="TileMapLayer" parent="."]
+
+[node name="CameraTrigger" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraTrigger"]
+position = Vector2(-51, 168)
+shape = SubResource("CircleShape2D_a5wda")
+
+[node name="CameraTrigger2" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraTrigger2"]
+position = Vector2(5151, 157)
+shape = SubResource("CircleShape2D_a5wda")
+
+[node name="TransitionZone" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 2
+script = ExtResource("10_y2yhm")
+next_section_path = "res://scenes/map/area_tutorial/sections/section_two.tscn"
+player_spawn_position = Vector2(100, 220)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionZone"]
+position = Vector2(5149, 167)
+shape = SubResource("RectangleShape2D_o7lat")
+
+[connection signal="area_entered" from="Middle/TriggerJumpTutorial" to="Middle/TriggerJumpTutorial" method="_on_area_entered"]
+[connection signal="area_entered" from="Middle/TriggerAttackTutorial" to="Middle/TriggerAttackTutorial" method="_on_area_entered"]
+[connection signal="area_entered" from="CameraTrigger" to="." method="_on_camera_trigger_area_entered"]
+[connection signal="area_entered" from="CameraTrigger2" to="." method="_on_camera_trigger_area_entered"]
+[connection signal="area_entered" from="TransitionZone" to="TransitionZone" method="_on_area_entered"]

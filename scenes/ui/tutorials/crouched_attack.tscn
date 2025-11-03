@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://0cqbqbs1eqkl"]
+[gd_scene load_steps=4 format=3 uid="uid://0cqbqbs1eqkl"]
 
+[ext_resource type="Script" uid="uid://bq8vgh6djachg" path="res://scenes/ui/tutorials/crouched_attack.gd" id="1_d3vyr"]
 [ext_resource type="Theme" uid="uid://dp2ii6kb76dkt" path="res://assets/resources/themes/tutorials_theme.tres" id="1_jtqvu"]
 [ext_resource type="Texture2D" uid="uid://b3xc3nowhbqa5" path="res://assets/sprites/UI/UI Dialogos y tutoriales/get_down_attack.png" id="2_jtqvu"]
 
 [node name="CrouchedAttack" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_d3vyr")
 
 [node name="MainContainer" type="PanelContainer" parent="."]
 anchors_preset = 8
@@ -62,3 +65,5 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Continuar"
+
+[connection signal="pressed" from="MainContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

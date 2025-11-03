@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cotcr7xgfwbku"]
+[gd_scene load_steps=4 format=3 uid="uid://cotcr7xgfwbku"]
 
 [ext_resource type="Texture2D" uid="uid://bc2ja5yepd8cm" path="res://assets/sprites/UI/UI Dialogos y tutoriales/jump.png" id="1_1t1bh"]
+[ext_resource type="Script" uid="uid://ddb32i6ojupky" path="res://scenes/ui/tutorials/jump_tutorial.gd" id="1_3borp"]
 [ext_resource type="Theme" uid="uid://dp2ii6kb76dkt" path="res://assets/resources/themes/tutorials_theme.tres" id="1_61uad"]
 
 [node name="JumpTutorial" type="CanvasLayer"]
+process_mode = 3
+visible = false
+script = ExtResource("1_3borp")
 
 [node name="MainContainer" type="PanelContainer" parent="."]
 anchors_preset = 8
@@ -62,3 +66,5 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Continuar"
+
+[connection signal="pressed" from="MainContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

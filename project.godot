@@ -34,6 +34,7 @@ enemies=""
 player=""
 save_point=""
 sections=""
+main=""
 
 [input]
 
@@ -82,6 +83,7 @@ move_up={
 2d_physics/layer_4="enemies"
 2d_physics/layer_5="collectibles"
 2d_physics/layer_6="save_point"
+2d_physics/layer_7="tutorials"
 
 [rendering]
 

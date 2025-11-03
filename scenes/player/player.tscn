@@ -438,7 +438,7 @@ size = Vector2(30, 68)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
-collision_mask = 25
+collision_mask = 153
 script = ExtResource("1_p47bc")
 move_speed = 160.0
 jump_speed = 435.0
