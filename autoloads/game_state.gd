@@ -35,9 +35,9 @@ func mark_tutorial_shown(name: String) -> void:
 @warning_ignore("shadowed_variable_base_class")
 func should_show_tutorial(name: String) -> bool:
 	"""
-		Devuelve true si el tutorial NO ha sido mostrado (es decir: hay que mostrarlo).
+		Si el valor es false, el tutorial NO ha sido mostrado (es decir: hay que mostrarlo).
 	"""
-	return not (name in save_data["tutorials_shown"] and save_data["tutorials_shown"][name] == true)
+	return save_data["tutorials_shown"][name]
 
 # ---------- Checkpoint (escena + posición) ----------
 func set_checkpoint(scene_path: String, player_position: Vector2) -> void:
@@ -78,6 +78,3 @@ func reset_save() -> void:
 		"player_position": Vector2.ZERO,
 		"tutorials_shown": {}
 	}
-
-func saveData():
-	print('Partida guardada con exito')

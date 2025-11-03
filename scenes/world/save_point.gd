@@ -25,8 +25,8 @@ func saveGame():
 		var player = get_tree().get_first_node_in_group("player")
 		var scene = get_tree().get_first_node_in_group("sections")
 		GameState.set_checkpoint(scene.scene_file_path,player.position)
-		print(GameState.save_data["scene_path"])
-		print(GameState.save_data["player_position"])
+		print(GameState.get_checkpoint_scene())
+		print(GameState.get_checkpoint_position())
 		print(GameState.save_data["tutorials_shown"]["jump"])
 		await get_tree().create_timer(2.64).timeout
 		state_machine.travel("save_idle")

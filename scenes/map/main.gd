@@ -34,7 +34,6 @@ func _change_section(new_section_path: String, new_position: Vector2):
 	var new_section_scene = load(new_section_path)
 	var new_section = new_section_scene.instantiate()
 	curren_level.add_child(new_section)
-	session = curren_level.get_child(0)
 
 	# mover player
 	player.global_position = new_position

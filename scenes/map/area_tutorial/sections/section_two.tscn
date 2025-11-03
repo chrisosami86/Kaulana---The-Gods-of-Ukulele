@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=4 uid="uid://nlgpvls2crxw"]
+[gd_scene load_steps=8 format=4 uid="uid://nlgpvls2crxw"]
 
 [ext_resource type="Texture2D" uid="uid://cxrkasni83uxe" path="res://assets/sprites/world/gorund2.png" id="1_7t51w"]
 [ext_resource type="Script" uid="uid://rxlxppbvx063" path="res://scenes/map/area_tutorial/sections/section_two.gd" id="1_fnxdr"]
+[ext_resource type="Script" uid="uid://dcpnphlb0gwid" path="res://scenes/map/area_tutorial/sections/transition_zone.gd" id="3_fnxdr"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lw1yi"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fnxdr"]
 texture = ExtResource("1_7t51w")
 texture_region_size = Vector2i(48, 48)
 0:0/0 = 0
@@ -59,10 +60,13 @@ texture_region_size = Vector2i(48, 48)
 tile_size = Vector2i(48, 48)
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
-sources/0 = SubResource("TileSetAtlasSource_lw1yi")
+sources/0 = SubResource("TileSetAtlasSource_fnxdr")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7t51w"]
 radius = 133.63383
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7t51w"]
+size = Vector2(29, 154)
 
 [node name="Section2" type="Node2D"]
 script = ExtResource("1_fnxdr")
@@ -92,5 +96,31 @@ collision_mask = 2
 position = Vector2(3764, 164)
 shape = SubResource("CircleShape2D_7t51w")
 
+[node name="TransitionZone" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 2
+script = ExtResource("3_fnxdr")
+next_section_path = "res://scenes/map/area_tutorial/sections/section_one.tscn"
+player_spawn_position = Vector2(5125, 220)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionZone"]
+position = Vector2(76, 166)
+shape = SubResource("RectangleShape2D_7t51w")
+debug_color = Color(0.6339733, 0.72985774, 0.07010373, 0.41960785)
+
+[node name="TransitionZone2" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 2
+script = ExtResource("3_fnxdr")
+next_section_path = "res://scenes/map/area_tutorial/sections/section_one.tscn"
+player_spawn_position = Vector2(5125, 220)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionZone2"]
+position = Vector2(3824, 169)
+shape = SubResource("RectangleShape2D_7t51w")
+debug_color = Color(0.6339733, 0.72985774, 0.07010373, 0.41960785)
+
 [connection signal="area_entered" from="CameraTrigger" to="." method="_on_camera_trigger_area_entered"]
 [connection signal="area_entered" from="CameraTrigger2" to="." method="_on_camera_trigger_area_entered"]
+[connection signal="area_entered" from="TransitionZone" to="TransitionZone" method="_on_area_entered"]
+[connection signal="area_entered" from="TransitionZone2" to="TransitionZone2" method="_on_area_entered"]

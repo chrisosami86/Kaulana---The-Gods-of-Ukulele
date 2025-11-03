@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://dgm20ufql7vsm"]
+[gd_scene load_steps=20 format=4 uid="uid://dgm20ufql7vsm"]
 
 [ext_resource type="Script" uid="uid://ckvnkns86v2kw" path="res://scenes/map/area_tutorial/sections/section_one.gd" id="1_kmclc"]
 [ext_resource type="Texture2D" uid="uid://blt44my2pyssf" path="res://assets/sprites/world/ground.png" id="1_uwo1q"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://b1anbhlxt35o7" path="res://scenes/map/area_tutorial/sections/trigger_tutorial.gd" id="6_gywth"]
 [ext_resource type="Script" uid="uid://dw0i4exvr0p08" path="res://scenes/map/area_tutorial/sections/trigger_attack_tutorial.gd" id="8_a5wda"]
 [ext_resource type="PackedScene" uid="uid://d1cogfq3ut6jn" path="res://scenes/ui/tutorials/attack_tutorial.tscn" id="9_y2yhm"]
+[ext_resource type="PackedScene" uid="uid://c443ythutsurv" path="res://scenes/Enemies/enemy_one.tscn" id="10_o7lat"]
 [ext_resource type="Script" uid="uid://dcpnphlb0gwid" path="res://scenes/map/area_tutorial/sections/transition_zone.gd" id="10_y2yhm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kmclc"]
@@ -125,7 +126,7 @@ sources/2 = SubResource("TileSetAtlasSource_5vrai")
 radius = 133.63383
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o7lat"]
-size = Vector2(20, 154)
+size = Vector2(20, 147)
 
 [node name="Section1" type="Node2D" groups=["sections"]]
 script = ExtResource("1_kmclc")
@@ -166,6 +167,15 @@ shape = SubResource("CircleShape2D_o7lat")
 [node name="AttackTutorial" parent="Middle" instance=ExtResource("9_y2yhm")]
 visible = false
 
+[node name="EnemyOne" parent="Middle" instance=ExtResource("10_o7lat")]
+position = Vector2(4714.484, 225)
+
+[node name="EnemyOne2" parent="Middle" instance=ExtResource("10_o7lat")]
+position = Vector2(4813.368, 223)
+
+[node name="EnemyOne3" parent="Middle" instance=ExtResource("10_o7lat")]
+position = Vector2(4597.6206, 223)
+
 [node name="Foreground" type="TileMapLayer" parent="."]
 
 [node name="CameraTrigger" type="Area2D" parent="."]
@@ -189,11 +199,12 @@ collision_layer = 128
 collision_mask = 2
 script = ExtResource("10_y2yhm")
 next_section_path = "res://scenes/map/area_tutorial/sections/section_two.tscn"
-player_spawn_position = Vector2(100, 220)
+player_spawn_position = Vector2(140, 220)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionZone"]
-position = Vector2(5149, 167)
+position = Vector2(5180, 168.5)
 shape = SubResource("RectangleShape2D_o7lat")
+debug_color = Color(0.63529414, 0.7294118, 0.07058824, 0.41960785)
 
 [connection signal="area_entered" from="Middle/TriggerJumpTutorial" to="Middle/TriggerJumpTutorial" method="_on_area_entered"]
 [connection signal="area_entered" from="Middle/TriggerAttackTutorial" to="Middle/TriggerAttackTutorial" method="_on_area_entered"]
