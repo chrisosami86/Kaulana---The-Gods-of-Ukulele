@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=4 uid="uid://nlgpvls2crxw"]
 
 [ext_resource type="Texture2D" uid="uid://cxrkasni83uxe" path="res://assets/sprites/world/gorund2.png" id="1_7t51w"]
-[ext_resource type="Script" uid="uid://rxlxppbvx063" path="res://scenes/map/area_tutorial/sections/section_two.gd" id="1_fnxdr"]
+[ext_resource type="Script" uid="uid://ckvnkns86v2kw" path="res://scenes/map/area_tutorial/sections/limit_camera_section.gd" id="1_fnxdr"]
 [ext_resource type="Script" uid="uid://dcpnphlb0gwid" path="res://scenes/map/area_tutorial/sections/transition_zone.gd" id="3_fnxdr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fnxdr"]
@@ -70,7 +70,7 @@ size = Vector2(29, 154)
 
 [node name="Section2" type="Node2D"]
 script = ExtResource("1_fnxdr")
-camera_bounds = Rect2(80, -300, 3696, 624)
+camera_bounds = Rect2(80, -250, 3696, 624)
 
 [node name="Background" type="TileMapLayer" parent="."]
 
@@ -112,8 +112,8 @@ debug_color = Color(0.6339733, 0.72985774, 0.07010373, 0.41960785)
 collision_layer = 128
 collision_mask = 2
 script = ExtResource("3_fnxdr")
-next_section_path = "res://scenes/map/area_tutorial/sections/section_one.tscn"
-player_spawn_position = Vector2(5125, 220)
+next_section_path = "res://scenes/map/area_tutorial/sections/section_three.tscn"
+player_spawn_position = Vector2(120, 220)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionZone2"]
 position = Vector2(3824, 169)

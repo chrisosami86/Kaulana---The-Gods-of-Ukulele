@@ -26,4 +26,4 @@ color = Color(0, 0, 0, 1)
 [node name="Section1" parent="CurrenLevel" instance=ExtResource("4_cn66n")]
 
 [node name="Player" parent="." instance=ExtResource("2_5n0wg")]
-position = Vector2(-111, 201)
+position = Vector2(-116, 208)

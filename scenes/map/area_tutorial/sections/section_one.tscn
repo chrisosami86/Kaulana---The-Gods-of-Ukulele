@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=4 uid="uid://dgm20ufql7vsm"]
 
-[ext_resource type="Script" uid="uid://ckvnkns86v2kw" path="res://scenes/map/area_tutorial/sections/section_one.gd" id="1_kmclc"]
+[ext_resource type="Script" uid="uid://ckvnkns86v2kw" path="res://scenes/map/area_tutorial/sections/limit_camera_section.gd" id="1_kmclc"]
 [ext_resource type="Texture2D" uid="uid://blt44my2pyssf" path="res://assets/sprites/world/ground.png" id="1_uwo1q"]
 [ext_resource type="Texture2D" uid="uid://cxrkasni83uxe" path="res://assets/sprites/world/gorund2.png" id="3_6y5ly"]
 [ext_resource type="Texture2D" uid="uid://b0bfm0xeipjft" path="res://assets/sprites/world/spike_01.png" id="4_7ym6a"]
