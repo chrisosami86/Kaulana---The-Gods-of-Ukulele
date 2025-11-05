@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var fade_rect: ColorRect = $CanvasLayer/ColorRect
 @onready var player: CharacterBody2D = $Player
-@onready var session: Node2D = $CurrenLevel/Section1
+@onready var session: Node2D = $CurrenLevel/Section3
 @onready var curren_level: Node2D = $CurrenLevel
 
 var is_transitioning = false

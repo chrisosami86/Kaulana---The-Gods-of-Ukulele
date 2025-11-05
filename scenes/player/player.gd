@@ -49,15 +49,21 @@ func _physics_process(delta: float) -> void:
 #Funcion para actualizar las animaciones
 #del personaje
 func update_animations():
+	if is_damaged:
+		velocity.x = 0
+		animated_sprite.play("damage")
+		return
+	
+	if not is_alive:
+		animated_sprite.play("die")
+		return
+		
 	if is_attacking:
 		if is_on_floor():
 			velocity.x = 0
 		return
 	
-	if is_damaged:
-		velocity.x = 0
-		animated_sprite.play("damage")
-		return
+	
 	
 	if is_crouched and is_on_floor():
 		animated_sprite.play("crouched")
@@ -70,9 +76,7 @@ func update_animations():
 			animated_sprite.play("fall")
 		return
 	
-	if not is_alive:
-		animated_sprite.play("die")
-		return
+	
 		
 
 		
@@ -135,15 +139,20 @@ func get_down():
 func take_damage(amount: int):
 	is_damaged = true
 	health -= amount
+	
 	if health < 0:
 		health = 0
+
 	get_tree().current_scene.get_node("HUD").update_hearts(health, max_health)
 		
 	if health <= 0:
+		velocity.y += gravity
 		die()
 
 func die():
 	is_alive = false
+	velocity.x= 0
+	set_collision_mask_value(4,false)
 	#set_process(false)
 	
 	
@@ -187,9 +196,6 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	
 	if animated_sprite.animation == 'damage':
 		is_damaged = false
-
-
-
 
 
 func _on_hurt_box_body_entered(body: Node2D) -> void:

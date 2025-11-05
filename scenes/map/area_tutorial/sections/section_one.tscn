@@ -1,7 +1,8 @@
-[gd_scene load_steps=30 format=4 uid="uid://dgm20ufql7vsm"]
+[gd_scene load_steps=31 format=4 uid="uid://dgm20ufql7vsm"]
 
 [ext_resource type="Script" uid="uid://ckvnkns86v2kw" path="res://scenes/map/area_tutorial/sections/limit_camera_section.gd" id="1_kmclc"]
 [ext_resource type="Texture2D" uid="uid://blt44my2pyssf" path="res://assets/sprites/world/ground.png" id="1_uwo1q"]
+[ext_resource type="PackedScene" uid="uid://bgr4blas06loa" path="res://scenes/Enemies/world/saw_enemy.tscn" id="2_5g27e"]
 [ext_resource type="Texture2D" uid="uid://cxrkasni83uxe" path="res://assets/sprites/world/gorund2.png" id="3_6y5ly"]
 [ext_resource type="Texture2D" uid="uid://b0bfm0xeipjft" path="res://assets/sprites/world/spike_01.png" id="4_7ym6a"]
 [ext_resource type="PackedScene" uid="uid://cotcr7xgfwbku" path="res://scenes/ui/tutorials/jump_tutorial.tscn" id="6_8uus7"]
@@ -223,6 +224,9 @@ position = Vector2(2283, -168)
 [node name="SpikeEnemy10" parent="Enemies" instance=ExtResource("10_o7lat")]
 position = Vector2(2331, -168)
 
+[node name="SawEnemy" parent="Enemies" instance=ExtResource("2_5g27e")]
+position = Vector2(4423, 102)
+
 [node name="EnemyTwo" parent="Enemies" instance=ExtResource("7_nj1d7")]
 position = Vector2(4247, 113)
 
@@ -296,6 +300,9 @@ shape = SubResource("CircleShape2D_dmib6")
 
 [node name="HeartItem" parent="Items" instance=ExtResource("15_dmib6")]
 position = Vector2(737, -292)
+
+[node name="HeartItem3" parent="Items" instance=ExtResource("15_dmib6")]
+position = Vector2(609, -388)
 
 [node name="HeartItem2" parent="Items" instance=ExtResource("15_dmib6")]
 position = Vector2(3298, -243)

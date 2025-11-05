@@ -10,7 +10,7 @@ var save_data = {
 	"player_position": Vector2.ZERO,
 	"tutorials_shown": {
 		"attack": false,
-		"crounched": false,
+		"crouched": false,
 		"jump": false,
 		"run": false,
 		"health": false,

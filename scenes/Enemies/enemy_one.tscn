@@ -99,12 +99,12 @@ animation = &"damage"
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_o7144"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ydbxk"]
+nodes/output/position = Vector2(460, 160)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_dbgqe")
 nodes/Animation/position = Vector2(60, 120)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_o7144")
 nodes/TimeScale/position = Vector2(260, 120)
-nodes/output/position = Vector2(460, 160)
-node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_373o5"]
 animation = &"die"
@@ -117,7 +117,7 @@ nodes/Animation/node = SubResource("AnimationNodeAnimation_373o5")
 nodes/Animation/position = Vector2(-100, 120)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_yc5yn")
 nodes/TimeScale/position = Vector2(120, 140)
-node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0f1js"]
 animation = &"idle"
@@ -125,12 +125,12 @@ animation = &"idle"
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_nnjc2"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_utxgq"]
+nodes/output/position = Vector2(560, 100)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_0f1js")
 nodes/Animation/position = Vector2(100, 60)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_nnjc2")
 nodes/TimeScale/position = Vector2(320, 100)
-nodes/output/position = Vector2(560, 100)
-node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ju7a7"]
 animation = &"run"
@@ -143,7 +143,7 @@ nodes/Animation/node = SubResource("AnimationNodeAnimation_ju7a7")
 nodes/Animation/position = Vector2(-100, 120)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_old3y")
 nodes/TimeScale/position = Vector2(120, 120)
-node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iihg5"]
 
