@@ -57,9 +57,8 @@ theme_type_variation = &"PanelContainerVariant"
 [node name="DescriptionLabel" type="Label" parent="MainContainer/MarginContainer/VBoxContainer/PanelContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Usa la tecla “2” del teclado numérico
-o el botón “A” en un mando de XBOX
-para saltar"
+text = "Usa la tecla “K” del teclado o el botón
+“A” en un mando de XBOX para saltar"
 
 [node name="Button" type="Button" parent="MainContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

@@ -1,5 +1,6 @@
 extends Area2D
-@onready var attack_tutorial: CanvasLayer = $"../AttackTutorial"
+@onready var die_tutorial: CanvasLayer = $"../DieTutorial"
+
 
 func _ready() -> void:
 	if GameState.should_show_tutorial("health"):
@@ -8,7 +9,7 @@ func _ready() -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.name == "HurtBox":
-		attack_tutorial.visible = true
+		die_tutorial.visible = true
 		GameState.mark_tutorial_shown("health")
 		get_tree().paused = true
 		queue_free()

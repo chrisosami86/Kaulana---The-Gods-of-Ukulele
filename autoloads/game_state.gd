@@ -12,9 +12,11 @@ var save_data = {
 		"attack": false,
 		"crounched": false,
 		"jump": false,
+		"run": false,
 		"health": false,
-		"die": false
-	}
+		"die": false,
+		"save": false
+			}
 }
 
 # ---------- Inicialización ----------

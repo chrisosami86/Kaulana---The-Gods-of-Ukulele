@@ -100,12 +100,12 @@ animation = &"damage"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ije7c"]
 graph_offset = Vector2(-59.9091, 49.6364)
+nodes/output/position = Vector2(600, 160)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_1gyo6")
 nodes/Animation/position = Vector2(80, 120)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_xs232")
 nodes/TimeScale/position = Vector2(340, 120)
-nodes/output/position = Vector2(600, 160)
-node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bxp18"]
 animation = &"die"
@@ -113,12 +113,12 @@ animation = &"die"
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_uo0o1"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_nuhvh"]
+nodes/output/position = Vector2(660, 140)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_bxp18")
 nodes/Animation/position = Vector2(80, 120)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_uo0o1")
 nodes/TimeScale/position = Vector2(380, 120)
-nodes/output/position = Vector2(660, 140)
-node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ek5ac"]
 animation = &"fly"
@@ -126,12 +126,12 @@ animation = &"fly"
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_7q4wp"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_yea7b"]
+nodes/output/position = Vector2(760, 100)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_ek5ac")
 nodes/Animation/position = Vector2(180, 80)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_7q4wp")
 nodes/TimeScale/position = Vector2(440, 60)
-nodes/output/position = Vector2(760, 100)
-node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_npj6a"]
 animation = &"idle"
@@ -139,12 +139,12 @@ animation = &"idle"
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_qqet5"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_2v686"]
+nodes/output/position = Vector2(640, 120)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_npj6a")
 nodes/Animation/position = Vector2(120, 120)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_qqet5")
 nodes/TimeScale/position = Vector2(380, 120)
-nodes/output/position = Vector2(640, 120)
-node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_571mr"]
 

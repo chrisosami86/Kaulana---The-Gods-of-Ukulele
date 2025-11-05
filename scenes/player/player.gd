@@ -112,21 +112,22 @@ func get_down():
 	if not is_alive or is_damaged:
 		return
 	if Input.is_action_pressed("crouched") and is_on_floor() and not is_attacking:
+		velocity.x = 0
 		is_crouched = true
 		collision_player.scale.y = 0.7
-		collision_player.position.y = 16
+		collision_player.position.y = 12.9
 		collision_hurtbox.scale.y = 0.7
 		collision_hurtbox.position.y = 14
 	elif Input.is_action_pressed("crouched") and is_on_floor() and is_attacking:
 		is_crouched = true
 		collision_player.scale.y = 0.7
-		collision_player.position.y = 16
+		collision_player.position.y = 12.9
 		collision_hurtbox.scale.y = 0.7
 		collision_hurtbox.position.y = 14
 	else:
 		is_crouched = false
 		collision_player.scale.y = 1
-		collision_player.position.y = 6.0
+		collision_player.position.y = 3.0
 		collision_hurtbox.position.y = 3.0
 		collision_hurtbox.scale.y = 1
 

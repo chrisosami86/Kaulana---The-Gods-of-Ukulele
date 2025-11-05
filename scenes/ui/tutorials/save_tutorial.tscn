@@ -1,13 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1cogfq3ut6jn"]
+[gd_scene load_steps=4 format=3 uid="uid://cdt2j5q4t0act"]
 
-[ext_resource type="Theme" uid="uid://dp2ii6kb76dkt" path="res://assets/resources/themes/tutorials_theme.tres" id="1_7ejwi"]
-[ext_resource type="Script" uid="uid://cm7ekxhwma6uh" path="res://scenes/ui/tutorials/attack_tutorial.gd" id="1_y63lr"]
-[ext_resource type="Texture2D" uid="uid://nhsacsgoyvh" path="res://assets/sprites/UI/UI Dialogos y tutoriales/attack.png" id="2_y63lr"]
+[ext_resource type="Theme" uid="uid://dp2ii6kb76dkt" path="res://assets/resources/themes/tutorials_theme.tres" id="1_ivmni"]
+[ext_resource type="Script" uid="uid://cbvbm5kuiv4nr" path="res://scenes/ui/tutorials/save_tutorial.gd" id="1_rw4jt"]
+[ext_resource type="Texture2D" uid="uid://bdr1uja6hofhn" path="res://assets/sprites/UI/UI Dialogos y tutoriales/save_point.png" id="2_rw4jt"]
 
-[node name="AttackTutorial" type="CanvasLayer"]
+[node name="SaveTutorial" type="CanvasLayer"]
 process_mode = 3
-visible = false
-script = ExtResource("1_y63lr")
+script = ExtResource("1_rw4jt")
 
 [node name="MainContainer" type="PanelContainer" parent="."]
 anchors_preset = 8
@@ -21,7 +20,7 @@ offset_right = 114.0
 offset_bottom = 109.5
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_7ejwi")
+theme = ExtResource("1_ivmni")
 
 [node name="MarginContainer" type="MarginContainer" parent="MainContainer"]
 layout_mode = 2
@@ -40,13 +39,13 @@ theme_override_constants/separation = 5
 layout_mode = 2
 size_flags_horizontal = 4
 theme_type_variation = &"HeaderLarge"
-text = "Acción de Ataque"
+text = "Acción de Guardar"
 
 [node name="Img" type="TextureRect" parent="MainContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("2_y63lr")
+texture = ExtResource("2_rw4jt")
 
 [node name="PanelContainer" type="PanelContainer" parent="MainContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -57,9 +56,9 @@ theme_type_variation = &"PanelContainerVariant"
 [node name="DescriptionLabel" type="Label" parent="MainContainer/MarginContainer/VBoxContainer/PanelContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Usa la tecla “J” del teclado o el botón
-“X” en un mando de XBOX para atacar
-enemigos"
+text = "Usa la tecla “W” del teclado o con el joystick
+“Arriba” en un mando de XBOX para guardar.
+En un SavePoint recuperas toda la salud"
 
 [node name="Button" type="Button" parent="MainContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

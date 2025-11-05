@@ -56,8 +56,8 @@ theme_type_variation = &"PanelContainerVariant"
 [node name="DescriptionLabel" type="Label" parent="MainContainer/MarginContainer/VBoxContainer/PanelContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Usa la tecla “Flecha Abajo” del teclado o
-con el joystick “Down” en el mando de XBOX.
+text = "Usa la tecla “S” del teclado o con el
+joystick “Down” en el mando de XBOX.
 También puedes atacar"
 
 [node name="Button" type="Button" parent="MainContainer/MarginContainer/VBoxContainer"]
