@@ -210,3 +210,7 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 	if area.is_in_group("save_point"):
 		health = 3
 		get_tree().current_scene.get_node("HUD").update_hearts(health, max_health)
+	
+	if area.name == "SpikeArea":
+		take_damage(1)
+		
