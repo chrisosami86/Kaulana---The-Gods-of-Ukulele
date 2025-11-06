@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqqjfgn3jftrp"]
+
+[ext_resource type="Texture2D" uid="uid://b3f7547q32q0x" path="res://assets/sprites/enemies/enemy_3/boss-sheet.png" id="1_k10sh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8erkr"]
+size = Vector2(20, 43)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o7r4u"]
+radius = 28.635643
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_trfyu"]
+radius = 18.110771
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cjg8o"]
+radius = 11.0
+
+[node name="EnemyThree" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 11.5)
+shape = SubResource("RectangleShape2D_8erkr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_k10sh")
+hframes = 7
+vframes = 9
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+
+[node name="DetecttionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetecttionArea"]
+shape = SubResource("CircleShape2D_o7r4u")
+debug_color = Color(0.4295671, 0.60197437, 3.85046e-07, 0.41960785)
+
+[node name="AttackRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource("CircleShape2D_trfyu")
+debug_color = Color(0.91963, 0.19922784, 0.509722, 0.41960785)
+
+[node name="Hurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_cjg8o")
+debug_color = Color(0.2801153, 0.50023645, 1, 0.41960785)
