@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://brlwwv3imq0wy"]
+[gd_scene load_steps=17 format=4 uid="uid://brlwwv3imq0wy"]
 
 [ext_resource type="Texture2D" uid="uid://cxrkasni83uxe" path="res://assets/sprites/world/gorund2.png" id="1_3wjxr"]
 [ext_resource type="Script" uid="uid://ckvnkns86v2kw" path="res://scenes/map/area_tutorial/sections/limit_camera_section.gd" id="1_6vie4"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cdt2j5q4t0act" path="res://scenes/ui/tutorials/save_tutorial.tscn" id="6_iedtn"]
 [ext_resource type="Script" uid="uid://bxhb1nj3hfjr4" path="res://scenes/map/area_tutorial/sections/trigger_save_tutorial.gd" id="6_u3p8m"]
 [ext_resource type="PackedScene" uid="uid://c443ythutsurv" path="res://scenes/Enemies/enemy_one.tscn" id="6_umvu2"]
+[ext_resource type="PackedScene" uid="uid://dqqjfgn3jftrp" path="res://scenes/Enemies/enemy_three.tscn" id="7_goy48"]
 [ext_resource type="PackedScene" uid="uid://da0dl6whuyhn6" path="res://scenes/world/save_point.tscn" id="7_umvu2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6vie4"]
@@ -213,6 +214,9 @@ position = Vector2(2400, 965)
 
 [node name="EnemyOne3" parent="Enemies" instance=ExtResource("6_umvu2")]
 position = Vector2(2853, 1235)
+
+[node name="EnemyThree" parent="Enemies" instance=ExtResource("7_goy48")]
+position = Vector2(670, 192)
 
 [node name="Items" type="Node2D" parent="."]
 

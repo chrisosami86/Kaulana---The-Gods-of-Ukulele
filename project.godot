@@ -92,6 +92,7 @@ move_up={
 2d_physics/layer_5="collectibles"
 2d_physics/layer_6="save_point"
 2d_physics/layer_7="tutorials"
+2d_physics/layer_8="projectiles_enemies"
 
 [rendering]
 
