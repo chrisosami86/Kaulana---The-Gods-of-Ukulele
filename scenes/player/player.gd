@@ -152,7 +152,8 @@ func take_damage(amount: int):
 func die():
 	is_alive = false
 	velocity.x= 0
-	set_collision_mask_value(4,false)
+	set_collision_layer_value(2, false)
+	set_collision_mask_value(4, false)
 	#set_process(false)
 	
 	
@@ -220,4 +221,3 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 	
 	if area.name == "SpikeArea":
 		take_damage(1)
-		

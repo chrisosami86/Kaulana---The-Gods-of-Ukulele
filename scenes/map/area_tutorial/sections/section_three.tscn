@@ -216,7 +216,7 @@ position = Vector2(2400, 965)
 position = Vector2(2853, 1235)
 
 [node name="EnemyThree" parent="Enemies" instance=ExtResource("7_goy48")]
-position = Vector2(670, 192)
+position = Vector2(1300, 188)
 
 [node name="Items" type="Node2D" parent="."]
 

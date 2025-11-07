@@ -1,0 +1,224 @@
+[gd_scene load_steps=30 format=3 uid="uid://pmjm3cwxnhqd"]
+
+[ext_resource type="Texture2D" uid="uid://dv3ffdwxe0ayg" path="res://assets/sprites/enemies/enemy_2/bat_enemy.png" id="1_p71c1"]
+[ext_resource type="Script" uid="uid://wdhg4fqhklwk" path="res://scenes/Enemies/bat_enemy.gd" id="1_ssvet"]
+
+[sub_resource type="Animation" id="Animation_ssvet"]
+resource_name = "idle"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [18]
+}
+
+[sub_resource type="Animation" id="Animation_c17ny"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [18]
+}
+
+[sub_resource type="Animation" id="Animation_48cvn"]
+resource_name = "fly"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_4pn3w"]
+resource_name = "damage"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.19999999, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [9, 10, 11, 12, 13]
+}
+
+[sub_resource type="Animation" id="Animation_q0tqt"]
+resource_name = "die"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [27, 28, 29, 30, 31, 32, 33, 34, 35]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o8nlx"]
+_data = {
+&"RESET": SubResource("Animation_c17ny"),
+&"damage": SubResource("Animation_4pn3w"),
+&"die": SubResource("Animation_q0tqt"),
+&"fly": SubResource("Animation_48cvn"),
+&"idle": SubResource("Animation_ssvet")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ssvet"]
+animation = &"damage"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_c17ny"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_48cvn"]
+nodes/output/position = Vector2(480, 140)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_ssvet")
+nodes/Animation/position = Vector2(120, 120)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_c17ny")
+nodes/TimeScale/position = Vector2(300, 120)
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4pn3w"]
+animation = &"die"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_q0tqt"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_o8nlx"]
+nodes/output/position = Vector2(460, 140)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_4pn3w")
+nodes/Animation/position = Vector2(120, 100)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_q0tqt")
+nodes/TimeScale/position = Vector2(300, 140)
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7jpon"]
+animation = &"fly"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_geink"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_8b5g6"]
+nodes/output/position = Vector2(420, 160)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_7jpon")
+nodes/Animation/position = Vector2(60, 120)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_geink")
+nodes/TimeScale/position = Vector2(240, 160)
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ay3su"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_f4yjk"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_14uey"]
+nodes/output/position = Vector2(560, 120)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_f4yjk")
+nodes/TimeScale/position = Vector2(295, 170)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_ay3su")
+nodes/Animation/position = Vector2(60, 120)
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uvxl0"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kqsh4"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_48p6s"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c2p2e"]
+switch_mode = 2
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8a1xf"]
+switch_mode = 2
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_whsbx"]
+states/Start/position = Vector2(196, 105)
+states/damage/node = SubResource("AnimationNodeBlendTree_48cvn")
+states/damage/position = Vector2(469, 204)
+states/die/node = SubResource("AnimationNodeBlendTree_o8nlx")
+states/die/position = Vector2(698, 204)
+states/fly/node = SubResource("AnimationNodeBlendTree_8b5g6")
+states/fly/position = Vector2(469, 105)
+states/idle/node = SubResource("AnimationNodeBlendTree_14uey")
+states/idle/position = Vector2(334, 105)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_uvxl0"), "idle", "fly", SubResource("AnimationNodeStateMachineTransition_kqsh4"), "fly", "damage", SubResource("AnimationNodeStateMachineTransition_48p6s"), "damage", "fly", SubResource("AnimationNodeStateMachineTransition_c2p2e"), "damage", "die", SubResource("AnimationNodeStateMachineTransition_8a1xf")]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7jpon"]
+radius = 7.071068
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_geink"]
+radius = 113.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8b5g6"]
+radius = 15.132746
+
+[node name="BatEnemy" type="Area2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_ssvet")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_p71c1")
+hframes = 9
+vframes = 4
+frame = 18
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_o8nlx")
+}
+autoplay = "idle"
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_whsbx")
+anim_player = NodePath("../AnimationPlayer")
+parameters/damage/TimeScale/scale = 1.5
+parameters/die/TimeScale/scale = 2.0
+parameters/fly/TimeScale/scale = 1.0
+parameters/idle/TimeScale/scale = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7jpon")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_geink")
+
+[node name="Hurtbox" type="Area2D" parent="." groups=["enemies"]]
+collision_layer = 8
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_8b5g6")

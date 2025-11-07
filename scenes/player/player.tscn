@@ -459,7 +459,7 @@ script = ExtResource("7_0owmy")
 
 [node name="AttackTimer" type="Timer" parent="."]
 
-[node name="AttackHitbox" type="Area2D" parent="."]
+[node name="AttackHitbox" type="Area2D" parent="." groups=["player"]]
 collision_layer = 4
 collision_mask = 0
 

@@ -51,6 +51,8 @@ func take_damage():
 
 func die():
 	state_machine.travel('die')
+	set_collision_layer_value(4, false)
+	set_collision_mask_value(3, false)
 	await get_tree().create_timer(0.5).timeout
 	queue_free()
 
