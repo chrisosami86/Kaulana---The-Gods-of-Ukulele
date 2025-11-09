@@ -5,10 +5,11 @@ extends CharacterBody2D
 @onready var current_animation_state = animation_tree["parameters/playback"]
 @onready var cooldown_timer: Timer = $CooldownTimer
 @onready var invulnerability_timer: Timer = $InvulnerabilityTimer
+@onready var sprite_2d: Sprite2D = $Sprite2D
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 # ❤️ Sistema de vida
-@export var max_health: int = 10
+@export var max_health: int = 100
 var current_health: int = max_health
 
 # 🛡️ Sistema de invulnerabilidad
@@ -86,11 +87,26 @@ func chase_player():
 	# Aplicar velocidad horizontal (solo en X)
 	velocity.x = direction.x * move_speed
 	
+	flip_sprite(direction.x)
+	
 	# 🧪 Debug: ver la dirección
 	print("Persiguiendo jugador. Dirección X: ", direction.x)
 
+# 🔄 Voltear sprite según la dirección
+func flip_sprite(direction_x: float) -> void:
+	if direction_x > 0:
+		# Moviendo a la derecha → sprite normal
+		sprite_2d.flip_h = false
+	elif direction_x < 0:
+		# Moviendo a la izquierda → voltear sprite
+		sprite_2d.flip_h = true
+	# Si direction_x == 0 (no se mueve), no cambiamos nada
 
 func start_attack():
+	# 🔄 Voltear hacia el jugador antes de atacar
+	if player != null:
+		var direction = player.global_position.x - global_position.x
+		flip_sprite(direction)
 	change_state(State.ATTACK)
 	print("¡Iniciando ataque!")
 	
@@ -98,9 +114,23 @@ func spawn_rock_spike() -> void:
 	if rock_spike_scene == null:
 		push_error("¡No se asignó la escena de la roca en el Inspector!")
 		return
-	
+		
+		# Verificar que tengamos referencia al jugador
+	if player == null:
+		print("⚠️ No hay jugador para apuntar la roca")
+		return
+		
 	var rock = rock_spike_scene.instantiate()
-	var spawn_position = global_position
+	var spawn_position = Vector2.ZERO
+	
+	var prediction_offset = 50  # Píxeles adelante
+	var player_direction = sign(player.velocity.x)  # -1 izquierda, 1 derecha, 0 quieto
+	
+	spawn_position.x = player.global_position.x + (player_direction * prediction_offset)
+	
+	# 📍 Mantener la Y en el suelo (mismo nivel que el golem)
+	spawn_position.y = global_position.y
+	
 	rock.global_position = spawn_position
 	get_parent().add_child(rock)
 	print("¡Roca spawneada!")

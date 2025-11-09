@@ -35,12 +35,23 @@ func _on_fade_out_finished() -> void:
 
 
 func _on_new_game_button_pressed() -> void:
+	# Resetear datos de guardado
+	GameState.reset_save()	
+	# Iniciar fade out
 	_start()
 
 
 func _on_load_button_pressed() -> void:
-	print("Cargando partida")
-	
+	_fade_out_to_load()
+
+func _fade_out_to_load() -> void:
+	var tween = create_tween()
+	tween.tween_property($ColorRect, "modulate:a", 1.0, 0.5)
+	tween.finished.connect(_on_fade_out_to_load_finished)
+
+func _on_fade_out_to_load_finished() -> void:
+	# Cargar partida (esto cambiará la escena automáticamente)
+	GameState.load_game()
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()

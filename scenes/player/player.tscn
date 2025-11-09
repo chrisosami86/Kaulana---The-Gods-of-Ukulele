@@ -436,7 +436,7 @@ size = Vector2(46, 44)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5gtgg"]
 size = Vector2(30, 68)
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" groups=["player", "projectiles"]]
 collision_layer = 2
 collision_mask = 153
 script = ExtResource("1_p47bc")
@@ -471,7 +471,7 @@ disabled = true
 [node name="HurtBox" type="Area2D" parent="."]
 visibility_layer = 2
 collision_layer = 2
-collision_mask = 56
+collision_mask = 184
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(0, 3)

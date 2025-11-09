@@ -35,6 +35,7 @@ player=""
 save_point=""
 sections=""
 main=""
+projectiles=""
 
 [input]
 

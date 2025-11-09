@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://dj2okl7imb6kj"]
+[gd_scene load_steps=9 format=4 uid="uid://dj2okl7imb6kj"]
 
 [ext_resource type="Texture2D" uid="uid://cxrkasni83uxe" path="res://assets/sprites/world/gorund2.png" id="1_1h646"]
 [ext_resource type="Script" uid="uid://ckvnkns86v2kw" path="res://scenes/map/area_tutorial/sections/limit_camera_section.gd" id="1_n635d"]
 [ext_resource type="Script" uid="uid://dcpnphlb0gwid" path="res://scenes/map/area_tutorial/sections/transition_zone.gd" id="2_n635d"]
+[ext_resource type="PackedScene" uid="uid://dqqjfgn3jftrp" path="res://scenes/Enemies/enemy_three.tscn" id="4_r503u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r503u"]
 texture = ExtResource("1_1h646")
@@ -119,6 +120,11 @@ player_spawn_position = Vector2(120, 220)
 position = Vector2(2483, 165)
 shape = SubResource("RectangleShape2D_blrji")
 debug_color = Color(0.6339733, 0.72985774, 0.07010373, 0.41960785)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="EnemyThree" parent="Enemies" instance=ExtResource("4_r503u")]
+position = Vector2(1300, 166)
 
 [connection signal="area_entered" from="CameraTrigger" to="." method="_on_camera_trigger_area_entered"]
 [connection signal="area_entered" from="CameraTrigger2" to="." method="_on_camera_trigger_2_area_entered"]

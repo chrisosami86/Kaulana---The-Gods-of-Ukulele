@@ -45,6 +45,8 @@ func take_damage() -> void:
 func die() -> void:
 	state_machine.travel("die")
 	velocity = Vector2.ZERO
+	set_collision_layer_value(4, false)
+	set_collision_mask_value(3, false)
 	if audio_player.stream:
 		audio_player.play()
 	await get_tree().create_timer(0.7).timeout
