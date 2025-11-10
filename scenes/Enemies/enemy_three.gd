@@ -16,6 +16,7 @@ var current_health: int = max_health
 var is_invulnerable: bool = false
 @export var invulnerability_time: float = 1.0  # Tiempo de inmunidad (ajustable)
 
+@export var portion_scene: PackedScene
 @export var rock_spike_scene: PackedScene
 @export var move_speed: float = 100.0
 
@@ -244,13 +245,9 @@ func remove_from_scene() -> void:
 
 # 💰 Soltar loot al morir
 func drop_loot() -> void:
-	# Aquí puedes instanciar monedas, items, etc.
-	# Ejemplo:
-	# var coin_scene = preload("res://scenes/items/Coin.tscn")
-	# var coin = coin_scene.instantiate()
-	# coin.global_position = global_position
-	# get_parent().add_child(coin)
-	
+	var potion  = portion_scene.instantiate()
+	potion.global_position = global_position + Vector2(0,30)
+	get_parent().add_child(potion)
 	print("💰 Loot dropped!")
 
 # 🔄 Recuperarse del estado HURT

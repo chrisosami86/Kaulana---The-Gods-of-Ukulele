@@ -1,7 +1,11 @@
 extends Node
 
 # Ruta del archivo de guardado (usaremos user://)
-var save_file_path: String = "res://save_data/savegame.json"
+#var save_file_path: String = "res://save_data/savegame.json"
+var save_file_path: String = "user://savegame.json"
+
+# 🚩 Flag para indicar si estamos cargando una partida guardada
+var is_loading_from_save: bool = false
 
 # Estructura en memoria
 var save_data = {
@@ -87,51 +91,67 @@ func load_game() -> void:
 		get_tree().change_scene_to_file("res://scenes/map/main.tscn")
 		return
 	
-	print("🎮 Cargando sección:", section_name)
+	print("🎮 Cargando partida guardada:")
+	print("   Sección:", section_name)
+	print("   Posición:", get_checkpoint_position())
+	
+	# 🚩 ACTIVAR FLAG antes de cambiar de escena
+	is_loading_from_save = true
 	
 	# Cambiar a Main.tscn
 	get_tree().call_deferred("change_scene_to_file", "res://scenes/map/main.tscn")
 	
 	# Esperar a que Main se cargue
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().process_frame
+	await get_tree().process_frame
 	
 	# Instanciar la sección correcta
 	_load_section(section_name)
 	
+	# Esperar a que la sección y el jugador se instancien
+	await get_tree().process_frame
+	await get_tree().process_frame
+	
 	# Posicionar al jugador
-	await get_tree().create_timer(0.1).timeout
 	_set_player_position(get_checkpoint_position())
+	
+	# 🚩 DESACTIVAR FLAG después de cargar
+	is_loading_from_save = false
 
 func _load_section(section_name: String) -> void:
+	"""
+	Instancia la sección indicada en CurrentLevel.
+	"""
 	var main = get_tree().current_scene
 	if not main:
 		push_error("❌ No se encontró Main")
 		return
 	
-	var current_level = main.get_node_or_null("CurrenLevel")
+	var current_level = main.get_node_or_null("CurrentLevel")
 	if not current_level:
-		push_error("❌ No se encontró CurrenLevel")
+		push_error("❌ No se encontró CurrentLevel")
 		return
 	
 	# Limpiar secciones anteriores
 	for child in current_level.get_children():
+		print("🗑️ Eliminando:", child.name)
 		child.queue_free()
 	
 	await get_tree().process_frame
 	
-	# Mapeo de nombres de sección a rutas de archivo
+	# Mapeo de secciones
 	var section_paths = {
-		"Section1": "res://scenes/map/area_tutorial/sections/section_one.tscn",
-		"Section2": "res://scenes/map/area_tutorial/sections/section_two.tscn",
-		"Section3": "res://scenes/map/area_tutorial/sections/section_three.tscn",
-		"Section4": "res://scenes/map/area_tutorial/sections/section_four.tscn",
-		"Section5": "res://scenes/map/area_tutorial/sections/section_five.tscn",
-		# Agrega más secciones aquí según tu juego
+		"Section1": "res://scenes/map/area_tutorial/sections/Section1.tscn",
+		"Section2": "res://scenes/map/area_tutorial/sections/Section2.tscn",
+		"Section3": "res://scenes/map/area_tutorial/sections/Section3.tscn",
+		"Section4": "res://scenes/map/area_tutorial/sections/Section4.tscn",
+		"Section5": "res://scenes/map/area_tutorial/sections/Section5.tscn",
 	}
 	
 	var section_path = section_paths.get(section_name, "")
 	if section_path == "":
 		push_error("❌ No existe path para:", section_name)
+		print("   Secciones disponibles:", section_paths.keys())
 		return
 	
 	var section_scene = load(section_path)
@@ -146,8 +166,16 @@ func _load_section(section_name: String) -> void:
 	
 	current_level.add_child(section_instance)
 	
-	# Verificar
-	print("✅ Sección instanciada con nombre:", section_instance.name)
+	print("✅ Sección instanciada:", section_instance.name)
+	print("   Verificación - Nombre real:", current_level.get_child(0).name if current_level.get_child_count() > 0 else "N/A")
+	
+	# 📷 Configurar cámara
+	await get_tree().process_frame
+	
+	if main.has_method("_setup_camera_for_section"):
+		main._setup_camera_for_section(section_instance)
+	else:
+		push_warning("⚠️ Main no tiene método _setup_camera_for_section")
 	
 # ---------- Guardar / Cargar (implementación posterior) ----------
 func save_to_disk() -> void:

@@ -1,8 +1,9 @@
-[gd_scene load_steps=45 format=3 uid="uid://dqqjfgn3jftrp"]
+[gd_scene load_steps=46 format=3 uid="uid://dqqjfgn3jftrp"]
 
 [ext_resource type="Script" uid="uid://61adm6xgmneh" path="res://scenes/Enemies/enemy_three.gd" id="1_8erkr"]
 [ext_resource type="Texture2D" uid="uid://b3f7547q32q0x" path="res://assets/sprites/enemies/enemy_3/boss-sheet.png" id="1_k10sh"]
 [ext_resource type="PackedScene" uid="uid://dkxsp1gu4dfjx" path="res://scenes/Enemies/rock_spike.tscn" id="2_o7r4u"]
+[ext_resource type="PackedScene" uid="uid://vlqesl0xhaj4" path="res://scenes/items/potion.tscn" id="2_trfyu"]
 
 [sub_resource type="Animation" id="Animation_8erkr"]
 length = 0.001
@@ -296,6 +297,7 @@ radius = 31.257
 collision_layer = 8
 script = ExtResource("1_8erkr")
 invulnerability_time = 2.0
+portion_scene = ExtResource("2_trfyu")
 rock_spike_scene = ExtResource("2_o7r4u")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

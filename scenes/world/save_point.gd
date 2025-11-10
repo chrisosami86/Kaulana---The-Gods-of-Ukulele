@@ -50,6 +50,7 @@ func saveGame():
 func _find_section_name() -> String:
 	"""
 	Busca el nodo Section subiendo en el árbol.
+	Retorna el nombre de la sección o "" si no la encuentra.
 	"""
 	var current = self
 	var max_iterations = 20
@@ -58,14 +59,46 @@ func _find_section_name() -> String:
 		if current == null:
 			break
 		
-		# Verificar si es una sección
-		if current.name.begins_with("Section"):
-			return current.name
+		print("🔍 Revisando:", current.name, "| Clase:", current.get_class())
+		
+		# 🔑 BUSCAR POR MÚLTIPLES CRITERIOS
+		var node_name = current.name
+		
+		# Verificar si empieza con "Section" (mayúscula)
+		if node_name.begins_with("Section"):
+			print("   ✅ Sección encontrada:", node_name)
+			return node_name
+		
+		# 🆕 TAMBIÉN buscar por nombres de archivo (minúsculas)
+		if node_name.begins_with("section"):
+			# Convertir "section three" → "Section3"
+			var mapped_name = _map_file_name_to_section_name(node_name)
+			print("   ✅ Sección encontrada (mapeada):", node_name, "→", mapped_name)
+			return mapped_name
 		
 		# Subir al padre
 		current = current.get_parent()
 	
+	push_error("❌ No se encontró nodo Section en el árbol")
 	return ""
+
+# 🗺️ Mapeo de nombres de archivo a nombres de sección
+func _map_file_name_to_section_name(file_name: String) -> String:
+	"""
+	Convierte nombres como "section three" a "Section3".
+	"""
+	var mapping = {
+		"section one": "Section1",
+		"section two": "Section2",
+		"section three": "Section3",
+		"section four": "Section4",
+		"section five": "Section5",
+	}
+	
+	# Normalizar (quitar espacios extras, convertir a minúsculas)
+	var normalized = file_name.strip_edges().to_lower()
+	
+	return mapping.get(normalized, "")
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.name == "HurtBox":

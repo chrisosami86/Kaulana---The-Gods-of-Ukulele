@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://dgm20ufql7vsm"]
+[gd_scene load_steps=31 format=4 uid="uid://dgm20ufql7vsm"]
 
 [ext_resource type="Script" uid="uid://ckvnkns86v2kw" path="res://scenes/map/area_tutorial/sections/limit_camera_section.gd" id="1_kmclc"]
 [ext_resource type="Texture2D" uid="uid://blt44my2pyssf" path="res://assets/sprites/world/ground.png" id="1_uwo1q"]
@@ -19,7 +19,6 @@
 [ext_resource type="Script" uid="uid://bq7vpg8ahsp17" path="res://scenes/map/area_tutorial/sections/heal_tutorial.gd" id="13_db6kh"]
 [ext_resource type="PackedScene" uid="uid://b3nu811ytoryu" path="res://scenes/ui/tutorials/health_tutorial.tscn" id="14_nj1d7"]
 [ext_resource type="PackedScene" uid="uid://ymvyw5wkv3fx" path="res://scenes/items/heart_item.tscn" id="15_dmib6"]
-[ext_resource type="PackedScene" uid="uid://da0dl6whuyhn6" path="res://scenes/world/save_point.tscn" id="20_xqwhn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kmclc"]
 texture = ExtResource("1_uwo1q")
@@ -181,7 +180,7 @@ shape = SubResource("CircleShape2D_a5wda")
 collision_layer = 128
 collision_mask = 2
 script = ExtResource("10_y2yhm")
-next_section_path = "res://scenes/map/area_tutorial/sections/section_two.tscn"
+next_section_path = "res://scenes/map/area_tutorial/sections/Section2.tscn"
 player_spawn_position = Vector2(140, 220)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionZone"]
@@ -307,9 +306,6 @@ position = Vector2(609, -388)
 
 [node name="HeartItem2" parent="Items" instance=ExtResource("15_dmib6")]
 position = Vector2(3298, -243)
-
-[node name="SavePoint" parent="." instance=ExtResource("20_xqwhn")]
-position = Vector2(1166, 179)
 
 [connection signal="area_entered" from="CameraTrigger" to="." method="_on_camera_trigger_area_entered"]
 [connection signal="area_entered" from="CameraTrigger2" to="." method="_on_camera_trigger_area_entered"]

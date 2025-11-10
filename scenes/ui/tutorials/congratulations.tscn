@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://bapw6v1hcw7p4"]
+
+[ext_resource type="Theme" uid="uid://dp2ii6kb76dkt" path="res://assets/resources/themes/tutorials_theme.tres" id="1_bovp6"]
+[ext_resource type="Script" uid="uid://dhkbnuuu5bctc" path="res://scenes/ui/tutorials/congratulations.gd" id="1_cmkxq"]
+
+[node name="Congratulations" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_cmkxq")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+process_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -164.0
+offset_top = -93.0
+offset_right = 164.0
+offset_bottom = 93.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_bovp6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+text = "Gracias por Jugar"
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Gracias por jugar este pre-Alpha, 
+pronto vendrán mejoras como sonidos,
+fondos, partículas y más variedad de
+enemigos.
+
+Deja tus comentarios en el Discord, dime que
+te pareció y déjame ideas para mejorar.
+
+Por ahora, esto es todo… Gracias
+"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Continuar"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

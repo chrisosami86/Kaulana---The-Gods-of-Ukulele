@@ -4,6 +4,7 @@ extends Node2D
 # Ajusta estos valores en el inspector por cada sesión.
 @export var camera_bounds: Rect2 = Rect2(Vector2.ZERO, Vector2(1024, 720))
 
+
 # Devuelve los bounds en coordenadas globales (mundo)
 func get_camera_bounds_global() -> Rect2:
 	var top_left_global = global_position + camera_bounds.position

@@ -19,15 +19,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_sc7aa")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 3
@@ -45,21 +36,36 @@ theme = ExtResource("3_ryme0")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
+focus_mode = 2
 
 [node name="NewGameButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../LoadButton")
 theme_type_variation = &"ButtonVariant"
 text = "Nueva Partida"
 
 [node name="LoadButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../NewGameButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
 theme_type_variation = &"ButtonVariant"
 text = "Continuar"
 
 [node name="QuitButton" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../LoadButton")
 theme_type_variation = &"ButtonVariant"
 text = "Salir"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/LoadButton" to="." method="_on_load_button_pressed"]

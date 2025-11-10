@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmuhh4ffc41xv"]
+[gd_scene load_steps=4 format=3 uid="uid://bmuhh4ffc41xv"]
 
 [ext_resource type="Script" uid="uid://bg3hvpfhq8awl" path="res://scenes/map/main.gd" id="1_4tf7g"]
 [ext_resource type="PackedScene" uid="uid://ciiq0auj6fod4" path="res://scenes/player/player.tscn" id="2_5n0wg"]
 [ext_resource type="PackedScene" uid="uid://bps4e1143ffge" path="res://scenes/ui/hud.tscn" id="3_cn66n"]
-[ext_resource type="PackedScene" uid="uid://dgm20ufql7vsm" path="res://scenes/map/area_tutorial/sections/section_one.tscn" id="3_g13t0"]
 
 [node name="Main" type="Node2D" groups=["main"]]
 script = ExtResource("1_4tf7g")
@@ -11,7 +10,6 @@ script = ExtResource("1_4tf7g")
 [node name="HUD" parent="." instance=ExtResource("3_cn66n")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15
@@ -24,7 +22,5 @@ color = Color(0, 0, 0, 1)
 
 [node name="CurrentLevel" type="Node2D" parent="."]
 
-[node name="Section1" parent="CurrentLevel" instance=ExtResource("3_g13t0")]
-
 [node name="Player" parent="." instance=ExtResource("2_5n0wg")]
-position = Vector2(154, 201)
+position = Vector2(-85, 171)

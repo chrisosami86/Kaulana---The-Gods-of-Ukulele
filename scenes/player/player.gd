@@ -124,6 +124,7 @@ func handle_attack():
 			
 		else:
 			animated_sprite.play("attack")
+			velocity.x = 0
 			collision_attack.position.y = -15
 
 func get_down():
@@ -138,6 +139,7 @@ func get_down():
 		collision_hurtbox.position.y = 14
 	elif Input.is_action_pressed("crouched") and is_on_floor() and is_attacking:
 		is_crouched = true
+		velocity.x = 0
 		collision_player.scale.y = 0.7
 		collision_player.position.y = 12.9
 		collision_hurtbox.scale.y = 0.7
@@ -211,7 +213,7 @@ func die():
 	
 #Funcion de movimiento del personaje
 func move_x():
-	if not is_alive or is_damaged:
+	if not is_alive or is_damaged or is_attacking:
 		return
 	if (is_facing_right and velocity.x < 0) or (not is_facing_right and velocity.x > 0):
 		scale.x *= -1
@@ -221,6 +223,8 @@ func move_x():
 #segun su direccion
 func flip():
 	if not is_alive or is_damaged:
+		return
+	if is_on_floor() and is_attacking:
 		return
 	var input_axis = Input.get_axis("move_left","move_right")
 	velocity.x = input_axis * move_speed

@@ -109,7 +109,7 @@ shape = SubResource("CircleShape2D_7t51w")
 collision_layer = 128
 collision_mask = 2
 script = ExtResource("3_fnxdr")
-next_section_path = "res://scenes/map/area_tutorial/sections/section_one.tscn"
+next_section_path = "res://scenes/map/area_tutorial/sections/Section1.tscn"
 player_spawn_position = Vector2(5125, 220)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionZone"]
@@ -121,7 +121,7 @@ debug_color = Color(0.6339733, 0.72985774, 0.07010373, 0.41960785)
 collision_layer = 128
 collision_mask = 2
 script = ExtResource("3_fnxdr")
-next_section_path = "res://scenes/map/area_tutorial/sections/section_three.tscn"
+next_section_path = "res://scenes/map/area_tutorial/sections/Section3.tscn"
 player_spawn_position = Vector2(120, 220)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionZone2"]

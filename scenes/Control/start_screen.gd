@@ -10,6 +10,9 @@ func _ready() -> void:
 	$ColorRect.modulate.a = 1.0
 	# Iniciamos el fade in con un tween
 	_fade_in()
+	
+	# 🔹 Asignar foco inicial al primer botón
+	$PanelContainer/VBoxContainer/NewGameButton.grab_focus()
 
 
 func _start() -> void:
@@ -42,7 +45,8 @@ func _on_new_game_button_pressed() -> void:
 
 
 func _on_load_button_pressed() -> void:
-	_fade_out_to_load()
+	if GameState.load_from_disk():
+		_fade_out_to_load()
 
 func _fade_out_to_load() -> void:
 	var tween = create_tween()
