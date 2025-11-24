@@ -18,7 +18,7 @@ func _physics_process(delta: float) -> void:
 	if state_machine.get_current_node() == "fly" and player:
 		fly_towards_player(delta)
 
-func fly_towards_player(delta: float) -> void:
+func fly_towards_player(_delta: float) -> void:
 	var direction = (player.global_position - global_position).normalized()
 	velocity = direction * speed
 	move_and_slide()

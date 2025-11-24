@@ -1,3 +1,5 @@
+class_name SavePoint
+
 extends Area2D
 
 @onready var animation_tree: AnimationTree = $AnimationTree
@@ -9,7 +11,7 @@ var is_saving = false
 func _ready() -> void:
 	state_machine.travel("save_idle")
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	saveGame()
 
 func saveGame():

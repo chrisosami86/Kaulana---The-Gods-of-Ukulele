@@ -1,3 +1,5 @@
+class_name HudPlayer
+
 extends CanvasLayer
 
 @onready var hearts = $HBoxContainer.get_children()

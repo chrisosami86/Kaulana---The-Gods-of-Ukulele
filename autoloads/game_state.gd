@@ -167,7 +167,7 @@ func _load_section(section_name: String) -> void:
 	current_level.add_child(section_instance)
 	
 	print("✅ Sección instanciada:", section_instance.name)
-	print("   Verificación - Nombre real:", current_level.get_child(0).name if current_level.get_child_count() > 0 else "N/A")
+	#print("   Verificación - Nombre real:", current_level.get_child(0).name if current_level.get_child_count() > 0 else "N/A")
 	
 	# 📷 Configurar cámara
 	await get_tree().process_frame

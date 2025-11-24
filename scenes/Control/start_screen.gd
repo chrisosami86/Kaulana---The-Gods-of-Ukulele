@@ -11,9 +11,8 @@ func _ready() -> void:
 	# Iniciamos el fade in con un tween
 	_fade_in()
 	
-	# 🔹 Asignar foco inicial al primer botón
-	$PanelContainer/VBoxContainer/NewGameButton.grab_focus()
-
+	# 🔹 Asignar foco inicial al segundo botón
+	$PanelContainer/VBoxContainer/LoadButton.grab_focus()
 
 func _start() -> void:
 	started = true

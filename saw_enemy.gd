@@ -6,7 +6,7 @@ extends StaticBody2D
 var direction = 1
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	move_saw()
 
 

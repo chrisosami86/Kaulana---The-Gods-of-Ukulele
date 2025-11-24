@@ -1,3 +1,4 @@
+class_name Player
 extends  CharacterBody2D
 
 @export var move_speed: float
@@ -53,6 +54,9 @@ func _physics_process(delta: float) -> void:
 		update_animations()
 		move_and_slide()
 		return
+	
+	# 🆕 Verificar si aterrizó durante ataque aéreo
+	check_landing_during_attack()
 	
 	handle_attack()
 	move_x()
@@ -127,6 +131,22 @@ func handle_attack():
 			velocity.x = 0
 			collision_attack.position.y = -15
 
+# 🛬 Verificar si aterrizó durante ataque aéreo
+func check_landing_during_attack():
+	if not is_alive or is_damaged:
+		return
+	
+	# Si está atacando en el aire Y acaba de aterrizar
+	if is_attacking and is_on_floor() and animated_sprite.animation == "jump-attack":
+		print("🛬 Aterrizó durante ataque aéreo - Cancelando")
+		
+		# Cancelar ataque
+		is_attacking = false
+		collision_attack.set_deferred("disabled", true)
+		
+		# Detener movimiento horizontal
+		velocity.x = 0
+
 func get_down():
 	if not is_alive or is_damaged:
 		return
@@ -164,12 +184,10 @@ func take_damage(amount: int):
 	if health < 0:
 		health = 0
 
+func update_hud():
 	get_tree().current_scene.get_node("HUD").update_hearts(health, max_health)
 	
-	# 💨 Knockback (retroceso) al recibir daño
-	apply_knockback()
 
-# 💨 Retroceso al recibir daño
 func apply_knockback():
 	var knockback_force = 150.0  # Ajustable
 	var knockback_direction = -1 if is_facing_right else 1  # Retrocede en dirección opuesta
@@ -239,6 +257,9 @@ func jump(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
+func get_healt(value):
+	health += value
+
 #Funcion que emite que recibe una señal
 #cuando termina una animacion
 func _on_animated_sprite_2d_animation_finished() -> void:
@@ -267,14 +288,17 @@ func _on_hurt_box_body_entered(body: Node2D) -> void:
 	
 	if body.is_in_group('i_heart'):
 		if health < max_health:  # ← Usar max_health en lugar de 3
-			health += 1
-			get_tree().current_scene.get_node("HUD").update_hearts(health, max_health)
+			get_healt(1)
+			update_hud()
 			body.queue_free()
 		else:
 			body.queue_free()
 	
 	if body.is_in_group('enemies'):
 		take_damage(1)
+		update_hud()
+		# 💨 Knockback (retroceso) al recibir daño
+		apply_knockback()
 
 
 
@@ -286,10 +310,15 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 	
 	if area.is_in_group("save_point"):
 		health = max_health  # ← Usar max_health en lugar de 3
-		get_tree().current_scene.get_node("HUD").update_hearts(health, max_health)
+		update_hud()
 	
 	if area.name == "SpikeArea":
 		take_damage(1)
+		update_hud()
+		apply_knockback()
 	
 	if area.is_in_group('projectiles'):
 		take_damage(1)
+		update_hud()
+		# 💨 Knockback (retroceso) al recibir daño
+		apply_knockback()
