@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://c443ythutsurv"]
+[gd_scene load_steps=32 format=3 uid="uid://c443ythutsurv"]
 
 [ext_resource type="Script" uid="uid://bph47sb0hdquu" path="res://scenes/Enemies/enemy_one.gd" id="1_dbgqe"]
 [ext_resource type="Texture2D" uid="uid://cgwh8n1hxptta" path="res://assets/sprites/enemies/enemy_1/enemy_1_sheet.png" id="2_dbgqe"]
@@ -175,14 +175,12 @@ states/run/node = SubResource("AnimationNodeBlendTree_i2e7c")
 states/run/position = Vector2(491, 100)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_iihg5"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_oe14f"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_57blk"), "idle", "damage", SubResource("AnimationNodeStateMachineTransition_22cd1"), "damage", "idle", SubResource("AnimationNodeStateMachineTransition_0xojl"), "damage", "run", SubResource("AnimationNodeStateMachineTransition_hg7dd"), "run", "damage", SubResource("AnimationNodeStateMachineTransition_1hbpd"), "damage", "die", SubResource("AnimationNodeStateMachineTransition_4dvx1")]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dbgqe"]
-size = Vector2(15, 22)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ydbxk"]
+radius = 7.0
+height = 22.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_373o5"]
 size = Vector2(24, 17)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o7144"]
-size = Vector2(24, 14)
 
 [node name="EnemyOne" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 8
@@ -210,9 +208,9 @@ parameters/idle/TimeScale/scale = 0.5
 parameters/run/TimeScale/scale = 0.8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3.516674e-06, 2.5)
+position = Vector2(0, 3)
 rotation = 1.57079
-shape = SubResource("RectangleShape2D_dbgqe")
+shape = SubResource("CapsuleShape2D_ydbxk")
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 8
@@ -222,30 +220,14 @@ collision_mask = 4
 position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_373o5")
 
-[node name="ContactDetector" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
+[node name="WallRay" type="RayCast2D" parent="."]
+position = Vector2(0, 6)
+target_position = Vector2(-28, 0)
+collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ContactDetector"]
-position = Vector2(0, 3)
-shape = SubResource("RectangleShape2D_o7144")
-debug_color = Color(0.52169734, 0.57319754, 0.09623336, 0.41960785)
-
-[node name="WallRayLeft" type="RayCast2D" parent="."]
-position = Vector2(-3, 0)
-target_position = Vector2(-20, 0)
-
-[node name="WallRayRight" type="RayCast2D" parent="."]
-position = Vector2(3, 0)
-target_position = Vector2(20, 0)
-
-[node name="GroundRayLeft" type="RayCast2D" parent="."]
-position = Vector2(-13, 6)
-target_position = Vector2(0, 15)
-
-[node name="GroundRayRight" type="RayCast2D" parent="."]
-position = Vector2(13, 6)
-target_position = Vector2(0, 15)
+[node name="GroundRay" type="RayCast2D" parent="."]
+position = Vector2(-12, 6)
+target_position = Vector2(-11, 8)
 
 [node name="IdleTimer" type="Timer" parent="."]
 wait_time = 2.5
@@ -253,5 +235,4 @@ autostart = true
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
-[connection signal="body_entered" from="ContactDetector" to="." method="_on_contact_detector_body_entered"]
 [connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]

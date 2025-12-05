@@ -15,11 +15,11 @@
 texture = ExtResource("1_3wjxr")
 texture_region_size = Vector2i(48, 48)
 0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -15.310291, 24, -15.431883, 24, 24, -24, 24)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -15.961132, 24, -15.961134, 24, 24, -24, 24)
 1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -15.310291, 24, -15.431883, 24, 24, -24, 24)
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -15.961132, 24, -15.961134, 24, 24, -24, 24)
 2:0/0 = 0
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -15.310291, 24, -15.431883, 24, 24, -24, 24)
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -15.961132, 24, -15.961134, 24, 24, -24, 24)
 4:0/0 = 0
 4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
 5:0/0 = 0

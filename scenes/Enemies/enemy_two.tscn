@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://xry0mf4drtdk"]
+[gd_scene load_steps=31 format=3 uid="uid://xry0mf4drtdk"]
 
 [ext_resource type="Script" uid="uid://c35f41baxr710" path="res://scenes/Enemies/enemy_two.gd" id="1_3n2te"]
 [ext_resource type="Texture2D" uid="uid://dv3ffdwxe0ayg" path="res://assets/sprites/enemies/enemy_2/bat_enemy.png" id="2_iphiw"]
@@ -181,6 +181,9 @@ radius = 47.8129
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hk6pw"]
 size = Vector2(30, 30)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_3n2te"]
+radius = 15.132746
+
 [node name="EnemyTwo" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 8
 collision_mask = 4
@@ -226,5 +229,14 @@ shape = SubResource("RectangleShape2D_hk6pw")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
+[node name="KnockbackArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KnockbackArea"]
+shape = SubResource("CircleShape2D_3n2te")
+debug_color = Color(0.4816472, 0.5846105, 0.16151041, 0.41960785)
+
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="body_entered" from="KnockbackArea" to="." method="_on_knockback_area_body_entered"]

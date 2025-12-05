@@ -9,6 +9,7 @@ var player: Node2D = null
 var speed := 80.0
 var hp := 2
 var is_damaged := false
+var can_move: bool = true
 
 func _ready() -> void:
 	state_machine.travel("idle")
@@ -19,6 +20,11 @@ func _physics_process(delta: float) -> void:
 		fly_towards_player(delta)
 
 func fly_towards_player(_delta: float) -> void:
+	# No perseguir si no puede moverse
+	if not can_move or is_damaged or state_machine.get_current_node() == "die":
+		velocity = Vector2.ZERO
+		return
+	
 	var direction = (player.global_position - global_position).normalized()
 	velocity = direction * speed
 	move_and_slide()
@@ -64,3 +70,12 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.name == "AttackHitbox":
 		take_damage()
+
+# 🆕 Conectar esta función a body_entered del CharacterBody2D
+func _on_knockback_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player") and can_move:
+		can_move = false
+		velocity = Vector2.ZERO
+		
+		await get_tree().create_timer(0.3).timeout
+		can_move = true

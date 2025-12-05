@@ -188,25 +188,27 @@ func update_hud():
 	get_tree().current_scene.get_node("HUD").update_hearts(health, max_health)
 	
 
-func apply_knockback():
-	var knockback_force = 150.0  # Ajustable
-	var knockback_direction = -1 if is_facing_right else 1  # Retrocede en dirección opuesta
+func apply_knockback(enemy: Node2D = null):
+	var knockback_force = 300.0
+	var knockback_direction = -1 if is_facing_right else 1
 	
-	# Aplicar retroceso horizontal
 	velocity.x = knockback_direction * knockback_force
 	
-	# 🛑 Detener ataque si estaba atacando
+	# 🆕 Knockback mutuo
+	if enemy and enemy is CharacterBody2D:
+		var enemy_knockback = -knockback_direction * 100.0
+		enemy.velocity.x = enemy_knockback
+	
 	if is_attacking:
 		is_attacking = false
 		collision_attack.set_deferred("disabled", true)
+	
 	if health <= 0:
 		die()
 	else:
-		# ⏱️ Timer de seguridad: si la animación no termina, forzar recuperación
-		await get_tree().create_timer(0.5).timeout
-		if is_damaged:  # Si todavía está en damaged después de 0.5s
+		await get_tree().create_timer(0.8).timeout
+		if is_damaged:
 			is_damaged = false
-			print("⚠️ Recuperación forzada de daño")
 
 func die():
 	is_alive = false
@@ -298,7 +300,7 @@ func _on_hurt_box_body_entered(body: Node2D) -> void:
 		take_damage(1)
 		update_hud()
 		# 💨 Knockback (retroceso) al recibir daño
-		apply_knockback()
+		apply_knockback(body)
 
 
 
