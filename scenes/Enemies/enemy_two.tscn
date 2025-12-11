@@ -1,7 +1,12 @@
-[gd_scene load_steps=31 format=3 uid="uid://xry0mf4drtdk"]
+[gd_scene load_steps=36 format=3 uid="uid://xry0mf4drtdk"]
 
 [ext_resource type="Script" uid="uid://c35f41baxr710" path="res://scenes/Enemies/enemy_two.gd" id="1_3n2te"]
 [ext_resource type="Texture2D" uid="uid://dv3ffdwxe0ayg" path="res://assets/sprites/enemies/enemy_2/bat_enemy.png" id="2_iphiw"]
+[ext_resource type="AudioStream" uid="uid://d3g481ff2ncgj" path="res://assets/resources/audios/SFX/bat/attack.mp3" id="3_nivbx"]
+[ext_resource type="AudioStream" uid="uid://cmbfwvfcjdahy" path="res://assets/resources/audios/SFX/bat/fly.mp3" id="4_ivenk"]
+[ext_resource type="AudioStream" uid="uid://2gfohew0f5uy" path="res://assets/resources/audios/SFX/bat/damage.mp3" id="5_sub2n"]
+[ext_resource type="AudioStream" uid="uid://bmhmh6ytdl35o" path="res://assets/resources/audios/SFX/bat/sfx_damage.mp3" id="6_1gyo6"]
+[ext_resource type="AudioStream" uid="uid://cnurp3ck80tch" path="res://assets/resources/audios/SFX/bat/die.mp3" id="7_xs232"]
 
 [sub_resource type="Animation" id="Animation_ljc0x"]
 length = 0.001
@@ -227,8 +232,6 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("RectangleShape2D_hk6pw")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-
 [node name="KnockbackArea" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
@@ -236,6 +239,23 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KnockbackArea"]
 shape = SubResource("CircleShape2D_3n2te")
 debug_color = Color(0.4816472, 0.5846105, 0.16151041, 0.41960785)
+
+[node name="Audios" type="Node2D" parent="."]
+
+[node name="AudioAttack" type="AudioStreamPlayer2D" parent="Audios"]
+stream = ExtResource("3_nivbx")
+
+[node name="AudioFly" type="AudioStreamPlayer2D" parent="Audios"]
+stream = ExtResource("4_ivenk")
+
+[node name="AudioDamage" type="AudioStreamPlayer2D" parent="Audios"]
+stream = ExtResource("5_sub2n")
+
+[node name="SFXDamage" type="AudioStreamPlayer2D" parent="Audios"]
+stream = ExtResource("6_1gyo6")
+
+[node name="AudioDie" type="AudioStreamPlayer2D" parent="Audios"]
+stream = ExtResource("7_xs232")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

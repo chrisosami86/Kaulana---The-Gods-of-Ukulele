@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://vslyd3qfto5x"]
+[gd_scene load_steps=6 format=3 uid="uid://vslyd3qfto5x"]
 
 [ext_resource type="Texture2D" uid="uid://do6bj8ta6t5pv" path="res://assets/resources/images/start_screen.png" id="1_sc7aa"]
 [ext_resource type="Script" uid="uid://bjr37xi2wjog0" path="res://scenes/Control/start_screen.gd" id="1_v2l2y"]
 [ext_resource type="Theme" uid="uid://dp2ii6kb76dkt" path="res://assets/resources/themes/tutorials_theme.tres" id="3_ryme0"]
+[ext_resource type="AudioStream" uid="uid://8hvus1gemftl" path="res://assets/resources/audios/Pistas/menu/Darkambient.mp3" id="4_xoe8g"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ryme0"]
 font_size = 11
@@ -87,6 +88,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_xoe8g")
+autoplay = true
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/LoadButton" to="." method="_on_load_button_pressed"]

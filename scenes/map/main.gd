@@ -4,6 +4,7 @@ extends Node2D
 @onready var player: CharacterBody2D = $Player
 @onready var curren_level: Node2D = $CurrentLevel
 
+
 var is_transitioning = false
 
 func _ready():

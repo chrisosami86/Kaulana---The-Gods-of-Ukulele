@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bh5r26glk5pt0"]
+[gd_scene load_steps=4 format=3 uid="uid://bh5r26glk5pt0"]
 
 [ext_resource type="Script" uid="uid://bth15a0nt8xk5" path="res://scenes/Control/game_over_screen.gd" id="1_jgytq"]
 [ext_resource type="Texture2D" uid="uid://cjl5j7cci3452" path="res://assets/resources/images/game_over_screen.png" id="1_jtqe7"]
+[ext_resource type="AudioStream" uid="uid://dgl7qtc2skfm0" path="res://assets/resources/audios/Pistas/menu/die_menu.mp3" id="3_ivq1w"]
 
 [node name="GameOverScreen" type="Control"]
 layout_mode = 3
@@ -29,3 +30,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ivq1w")
+autoplay = true

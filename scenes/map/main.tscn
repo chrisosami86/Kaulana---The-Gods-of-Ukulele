@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmuhh4ffc41xv"]
+[gd_scene load_steps=5 format=3 uid="uid://bmuhh4ffc41xv"]
 
 [ext_resource type="Script" uid="uid://bg3hvpfhq8awl" path="res://scenes/map/main.gd" id="1_4tf7g"]
 [ext_resource type="PackedScene" uid="uid://ciiq0auj6fod4" path="res://scenes/player/player.tscn" id="2_5n0wg"]
 [ext_resource type="PackedScene" uid="uid://bps4e1143ffge" path="res://scenes/ui/hud.tscn" id="3_cn66n"]
+[ext_resource type="AudioStream" uid="uid://c3ieq5o7tgtnr" path="res://assets/resources/audios/Pistas/world/Darkatmospher.mp3" id="4_cn66n"]
 
 [node name="Main" type="Node2D" groups=["main"]]
 script = ExtResource("1_4tf7g")
@@ -24,3 +25,10 @@ color = Color(0, 0, 0, 1)
 
 [node name="Player" parent="." instance=ExtResource("2_5n0wg")]
 position = Vector2(-85, 171)
+
+[node name="MainAudio" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+position = Vector2(964, 54)
+stream = ExtResource("4_cn66n")
+autoplay = true
+max_distance = 6000.0

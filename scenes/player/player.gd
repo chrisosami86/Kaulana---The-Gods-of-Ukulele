@@ -11,6 +11,11 @@ var health = 3
 @onready var collision_attack: CollisionShape2D = $AttackHitbox/CollisionShape2D
 @onready var collision_player: CollisionShape2D = $CollisionShape2D
 @onready var collision_hurtbox: CollisionShape2D = $HurtBox/CollisionShape2D
+@onready var audio_attack: AudioStreamPlayer2D = $AudioAttack
+@onready var audio_jump: AudioStreamPlayer2D = $AudioJump
+@onready var audio_damage: AudioStreamPlayer2D = $AudioDamage
+@onready var audio_die: AudioStreamPlayer2D = $AudioDie
+@onready var sfx_damage: AudioStreamPlayer2D = $SFXDamage
 
 
 #Referencia al nodo de animacion para poder
@@ -112,6 +117,7 @@ func handle_attack():
 		is_attacking = true
 		velocity.x = 0  # ← Detener movimiento al atacar
 		collision_attack.disabled = false
+		audio_attack.play()
 		
 		if not is_on_floor():
 			animated_sprite.play("jump-attack")
@@ -180,6 +186,8 @@ func take_damage(amount: int):
 	
 	is_damaged = true
 	health -= amount
+	audio_damage.play()
+	sfx_damage.play()
 	
 	if health < 0:
 		health = 0
@@ -211,6 +219,7 @@ func apply_knockback(enemy: Node2D = null):
 			is_damaged = false
 
 func die():
+	audio_die.play()
 	is_alive = false
 	is_damaged = false  # ← Limpiar bandera de daño
 	is_attacking = false  # ← Limpiar bandera de ataque
@@ -256,6 +265,7 @@ func jump(delta):
 		return
 	if(Input.is_action_just_pressed("jump") and is_on_floor()):
 		velocity.y = -jump_speed
+		audio_jump.play()
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
