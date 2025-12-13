@@ -16,6 +16,7 @@ var health = 3
 @onready var audio_damage: AudioStreamPlayer2D = $AudioDamage
 @onready var audio_die: AudioStreamPlayer2D = $AudioDie
 @onready var sfx_damage: AudioStreamPlayer2D = $SFXDamage
+@onready var sfx_attack: AudioStreamPlayer2D = $SFXAttack
 
 
 #Referencia al nodo de animacion para poder
@@ -118,6 +119,8 @@ func handle_attack():
 		velocity.x = 0  # ← Detener movimiento al atacar
 		collision_attack.disabled = false
 		audio_attack.play()
+		sfx_attack.play()
+		
 		
 		if not is_on_floor():
 			animated_sprite.play("jump-attack")

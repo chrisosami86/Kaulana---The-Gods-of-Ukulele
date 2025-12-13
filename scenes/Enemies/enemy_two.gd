@@ -3,8 +3,6 @@ extends CharacterBody2D
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var state_machine = animation_tree["parameters/playback"]
 @onready var detection_area: Area2D = $DetectionArea
-@onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
-@onready var audio_attack: AudioStreamPlayer2D = $Audios/AudioAttack
 @onready var audio_fly: AudioStreamPlayer2D = $Audios/AudioFly
 @onready var audio_damage: AudioStreamPlayer2D = $Audios/AudioDamage
 @onready var sfx_damage: AudioStreamPlayer2D = $Audios/SFXDamage
@@ -46,6 +44,8 @@ func take_damage() -> void:
 	if is_damaged or state_machine.get_current_node() == "die":
 		return
 
+	audio_damage.play()
+	sfx_damage.play()
 	is_damaged = true
 	hp -= 1
 	state_machine.travel("damage")
@@ -70,6 +70,7 @@ func die() -> void:
 
 # 👉 Este método se llamará desde la señal del editor (DetectionArea → body_entered)
 func _on_detection_area_body_entered(body: Node2D) -> void:
+	audio_fly.play()
 	if body.is_in_group("player") and state_machine.get_current_node() == "idle":
 		player = body
 		state_machine.travel("fly")
@@ -78,6 +79,7 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.name == "AttackHitbox":
 		take_damage()
+		
 
 # 🆕 Conectar esta función a body_entered del CharacterBody2D
 func _on_knockback_area_body_entered(body: Node2D) -> void:

@@ -1,16 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmuhh4ffc41xv"]
+[gd_scene load_steps=6 format=3 uid="uid://bmuhh4ffc41xv"]
 
 [ext_resource type="Script" uid="uid://bg3hvpfhq8awl" path="res://scenes/map/main.gd" id="1_4tf7g"]
 [ext_resource type="PackedScene" uid="uid://ciiq0auj6fod4" path="res://scenes/player/player.tscn" id="2_5n0wg"]
 [ext_resource type="PackedScene" uid="uid://bps4e1143ffge" path="res://scenes/ui/hud.tscn" id="3_cn66n"]
 [ext_resource type="AudioStream" uid="uid://c3ieq5o7tgtnr" path="res://assets/resources/audios/Pistas/world/Darkatmospher.mp3" id="4_cn66n"]
+[ext_resource type="Texture2D" uid="uid://bkucvoqxa576f" path="res://assets/sprites/world/MountainsLayers/trees.png" id="5_g13t0"]
 
 [node name="Main" type="Node2D" groups=["main"]]
 script = ExtResource("1_4tf7g")
 
+[node name="Parallax2D" type="Parallax2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+texture = ExtResource("5_g13t0")
+centered = false
+
 [node name="HUD" parent="." instance=ExtResource("3_cn66n")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15

@@ -1,7 +1,10 @@
-[gd_scene load_steps=33 format=3 uid="uid://c443ythutsurv"]
+[gd_scene load_steps=36 format=3 uid="uid://c443ythutsurv"]
 
 [ext_resource type="Script" uid="uid://bph47sb0hdquu" path="res://scenes/Enemies/enemy_one.gd" id="1_dbgqe"]
 [ext_resource type="Texture2D" uid="uid://cgwh8n1hxptta" path="res://assets/sprites/enemies/enemy_1/enemy_1_sheet.png" id="2_dbgqe"]
+[ext_resource type="AudioStream" uid="uid://6tkjkhj063ih" path="res://assets/resources/audios/SFX/crab/damage.mp3" id="3_373o5"]
+[ext_resource type="AudioStream" uid="uid://dhpne8t8xtg2u" path="res://assets/resources/audios/SFX/crab/die.mp3" id="4_yc5yn"]
+[ext_resource type="AudioStream" uid="uid://bdi5mbxnhij4i" path="res://assets/resources/audios/SFX/crab/sfx_damage.mp3" id="5_pvwcd"]
 
 [sub_resource type="Animation" id="Animation_o7144"]
 length = 0.001
@@ -250,6 +253,17 @@ target_position = Vector2(0, 15)
 [node name="IdleTimer" type="Timer" parent="."]
 wait_time = 2.5
 autostart = true
+
+[node name="Audios" type="Node2D" parent="."]
+
+[node name="AudioDamage" type="AudioStreamPlayer2D" parent="Audios"]
+stream = ExtResource("3_373o5")
+
+[node name="AudioDie" type="AudioStreamPlayer2D" parent="Audios"]
+stream = ExtResource("4_yc5yn")
+
+[node name="SFXDamage" type="AudioStreamPlayer2D" parent="Audios"]
+stream = ExtResource("5_pvwcd")
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

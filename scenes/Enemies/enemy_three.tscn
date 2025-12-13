@@ -1,9 +1,15 @@
-[gd_scene load_steps=46 format=3 uid="uid://dqqjfgn3jftrp"]
+[gd_scene load_steps=52 format=3 uid="uid://dqqjfgn3jftrp"]
 
 [ext_resource type="Script" uid="uid://61adm6xgmneh" path="res://scenes/Enemies/enemy_three.gd" id="1_8erkr"]
 [ext_resource type="Texture2D" uid="uid://b3f7547q32q0x" path="res://assets/sprites/enemies/enemy_3/boss-sheet.png" id="1_k10sh"]
 [ext_resource type="PackedScene" uid="uid://dkxsp1gu4dfjx" path="res://scenes/Enemies/rock_spike.tscn" id="2_o7r4u"]
 [ext_resource type="PackedScene" uid="uid://vlqesl0xhaj4" path="res://scenes/items/potion.tscn" id="2_trfyu"]
+[ext_resource type="AudioStream" uid="uid://dtb2bd2owqxdk" path="res://assets/resources/audios/SFX/golen/attack.mp3" id="5_mwxb8"]
+[ext_resource type="AudioStream" uid="uid://by2q74buu78fb" path="res://assets/resources/audios/SFX/golen/damage.mp3" id="6_hmslt"]
+[ext_resource type="AudioStream" uid="uid://ba8tix466umdd" path="res://assets/resources/audios/SFX/golen/sfx_attack.mp3" id="7_x8rdr"]
+[ext_resource type="AudioStream" uid="uid://b76ykubpqmh5r" path="res://assets/resources/audios/SFX/golen/die.mp3" id="8_k7lkx"]
+[ext_resource type="AudioStream" uid="uid://p0e0gqg0iyuh" path="res://assets/resources/audios/SFX/golen/rock.mp3" id="9_hlh0o"]
+[ext_resource type="AudioStream" uid="uid://dfrhdx0wki4j3" path="res://assets/resources/audios/SFX/golen/sfx_damage.mp3" id="10_hmslt"]
 
 [sub_resource type="Animation" id="Animation_8erkr"]
 length = 0.001
@@ -354,6 +360,26 @@ one_shot = true
 
 [node name="InvulnerabilityTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Audios" type="Node2D" parent="."]
+
+[node name="AudioAttack" type="AudioStreamPlayer2D" parent="Audios"]
+stream = ExtResource("5_mwxb8")
+
+[node name="AudioDamage" type="AudioStreamPlayer2D" parent="Audios"]
+stream = ExtResource("6_hmslt")
+
+[node name="SFXAttack" type="AudioStreamPlayer2D" parent="Audios"]
+stream = ExtResource("7_x8rdr")
+
+[node name="AudioDie" type="AudioStreamPlayer2D" parent="Audios"]
+stream = ExtResource("8_k7lkx")
+
+[node name="SFXRock" type="AudioStreamPlayer2D" parent="Audios"]
+stream = ExtResource("9_hlh0o")
+
+[node name="SFXDamage" type="AudioStreamPlayer2D" parent="Audios"]
+stream = ExtResource("10_hmslt")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detecttion_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detecttion_area_body_exited"]

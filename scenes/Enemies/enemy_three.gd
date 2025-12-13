@@ -7,6 +7,13 @@ extends CharacterBody2D
 @onready var invulnerability_timer: Timer = $InvulnerabilityTimer
 @onready var sprite_2d: Sprite2D = $Sprite2D
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
+@onready var audio_attack: AudioStreamPlayer2D = $Audios/AudioAttack
+@onready var audio_damage: AudioStreamPlayer2D = $Audios/AudioDamage
+@onready var sfx_attack: AudioStreamPlayer2D = $Audios/SFXAttack
+@onready var audio_die: AudioStreamPlayer2D = $Audios/AudioDie
+@onready var sfx_rock: AudioStreamPlayer2D = $Audios/SFXRock
+@onready var sfx_damage: AudioStreamPlayer2D = $Audios/SFXDamage
+
 
 # ❤️ Sistema de vida
 @export var max_health: int = 100
@@ -109,9 +116,12 @@ func start_attack():
 		var direction = player.global_position.x - global_position.x
 		flip_sprite(direction)
 	change_state(State.ATTACK)
+	audio_attack.play()
+	sfx_attack.play()
 	print("¡Iniciando ataque!")
 	
 func spawn_rock_spike() -> void:
+	sfx_rock.play()
 	if rock_spike_scene == null:
 		push_error("¡No se asignó la escena de la roca en el Inspector!")
 		return
@@ -151,6 +161,8 @@ func start_cooldown() -> void:
 
 # 💔 Recibir daño
 func take_damage(damage: int) -> void:
+	audio_damage.play()
+	sfx_damage.play()
 	# No recibir daño si ya está muerto
 	if current_enemy_state == State.DEATH:
 		return
@@ -212,6 +224,7 @@ func start_blink() -> void:
 
 # 💀 Morir
 func die() -> void:
+	audio_die.play()
 	change_state(State.DEATH)
 	print("¡Golem eliminado!")
 	

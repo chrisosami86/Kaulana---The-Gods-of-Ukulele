@@ -182,22 +182,22 @@ position = Vector2(583, 401)
 position = Vector2(2745, 156)
 
 [node name="EnemyOne" parent="Enemies" instance=ExtResource("7_2fs4f")]
-position = Vector2(1093, 134)
+position = Vector2(1094, 132)
 
 [node name="EnemyOne5" parent="Enemies" instance=ExtResource("7_2fs4f")]
-position = Vector2(495, 519)
+position = Vector2(495, 514)
 
 [node name="EnemyOne6" parent="Enemies" instance=ExtResource("7_2fs4f")]
-position = Vector2(587, 519)
+position = Vector2(587, 514)
 
 [node name="EnemyOne2" parent="Enemies" instance=ExtResource("7_2fs4f")]
-position = Vector2(1147, 134)
+position = Vector2(1148, 131)
 
 [node name="EnemyOne3" parent="Enemies" instance=ExtResource("7_2fs4f")]
-position = Vector2(2063, 86)
+position = Vector2(2062, 83)
 
 [node name="EnemyOne4" parent="Enemies" instance=ExtResource("7_2fs4f")]
-position = Vector2(1788, 519)
+position = Vector2(1786, 515)
 
 [node name="Items" type="Node2D" parent="."]
 

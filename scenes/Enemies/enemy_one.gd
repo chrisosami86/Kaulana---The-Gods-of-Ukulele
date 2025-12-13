@@ -17,6 +17,10 @@ var can_move: bool = true
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var state_machine = animation_tree["parameters/playback"]
 @onready var idle_timer: Timer = $IdleTimer
+@onready var audio_damage: AudioStreamPlayer2D = $Audios/AudioDamage
+@onready var audio_die: AudioStreamPlayer2D = $Audios/AudioDie
+@onready var sfx_damage: AudioStreamPlayer2D = $Audios/SFXDamage
+
 
 func _ready() -> void:
 	state_machine.travel('run')
@@ -58,6 +62,8 @@ func take_damage():
 	if state_machine.get_current_node() == 'die':
 		return
 	
+	audio_damage.play()
+	sfx_damage.play()
 	is_damaged = true
 	state_machine.travel('damage')
 	health -= 1
@@ -74,6 +80,7 @@ func take_damage():
 		velocity.x = speed * direction
 
 func die():
+	audio_die.play()
 	is_dead = true
 	state_machine.travel('die')
 	velocity.x = 0
