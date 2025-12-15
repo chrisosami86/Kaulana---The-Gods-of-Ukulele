@@ -1,13 +1,19 @@
-[gd_scene load_steps=14 format=4 uid="uid://nja5ttv1jehu"]
+[gd_scene load_steps=20 format=4 uid="uid://nja5ttv1jehu"]
 
 [ext_resource type="Script" uid="uid://ckvnkns86v2kw" path="res://scenes/map/area_tutorial/sections/limit_camera_section.gd" id="1_hc11v"]
 [ext_resource type="Texture2D" uid="uid://cxrkasni83uxe" path="res://assets/sprites/world/gorund2.png" id="2_cnxxs"]
+[ext_resource type="Texture2D" uid="uid://c8jp20mhxprs5" path="res://assets/sprites/world/MountainsLayers/sky.png" id="2_k5e7g"]
 [ext_resource type="Script" uid="uid://dcpnphlb0gwid" path="res://scenes/map/area_tutorial/sections/transition_zone.gd" id="3_d7vhw"]
 [ext_resource type="Texture2D" uid="uid://cnm0kvnekub8c" path="res://assets/sprites/world/barrera.png" id="3_eay4s"]
+[ext_resource type="Texture2D" uid="uid://ckxfuas01f6il" path="res://assets/sprites/world/MountainsLayers/far-clouds.png" id="3_ujptv"]
+[ext_resource type="Texture2D" uid="uid://djefxp3v6fpls" path="res://assets/sprites/world/MountainsLayers/near-clouds.png" id="4_s02qn"]
 [ext_resource type="PackedScene" uid="uid://d16hevvxvpkla" path="res://scenes/Enemies/world/spike_enemy.tscn" id="5_cc5dc"]
+[ext_resource type="Texture2D" uid="uid://c4ip8fofjnxjp" path="res://assets/sprites/world/MountainsLayers/far-mountains.png" id="5_y01vj"]
 [ext_resource type="PackedScene" uid="uid://xry0mf4drtdk" path="res://scenes/Enemies/enemy_two.tscn" id="6_373k5"]
+[ext_resource type="Texture2D" uid="uid://3eunrln2ymmc" path="res://assets/sprites/world/MountainsLayers/mountains.png" id="6_gxxlt"]
 [ext_resource type="PackedScene" uid="uid://ymvyw5wkv3fx" path="res://scenes/items/heart_item.tscn" id="6_m5n88"]
 [ext_resource type="PackedScene" uid="uid://c443ythutsurv" path="res://scenes/Enemies/enemy_one.tscn" id="7_2fs4f"]
+[ext_resource type="Texture2D" uid="uid://bkucvoqxa576f" path="res://assets/sprites/world/MountainsLayers/trees.png" id="7_um3yo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eay4s"]
 texture = ExtResource("2_cnxxs")
@@ -83,6 +89,71 @@ size = Vector2(29, 154)
 [node name="Section4" type="Node2D" groups=["sections"]]
 script = ExtResource("1_hc11v")
 camera_bounds = Rect2(100, -100, 3550, 900)
+
+[node name="Clouds" type="Node2D" parent="."]
+position = Vector2(0, 368)
+
+[node name="Sky" type="Parallax2D" parent="Clouds"]
+scroll_scale = Vector2(0, 0)
+scroll_offset = Vector2(0, -206)
+
+[node name="Sprite2D" type="Sprite2D" parent="Clouds/Sky"]
+position = Vector2(239.99998, -3)
+scale = Vector2(1.6593752, 1.6593752)
+texture = ExtResource("2_k5e7g")
+
+[node name="Clouds2" type="Parallax2D" parent="Clouds"]
+scroll_scale = Vector2(0.1, 1)
+repeat_size = Vector2(128, 0)
+repeat_times = 59
+
+[node name="Sprite2D" type="Sprite2D" parent="Clouds/Clouds2"]
+position = Vector2(2365, 11)
+texture = ExtResource("3_ujptv")
+
+[node name="Clouds1" type="Parallax2D" parent="Clouds"]
+scroll_scale = Vector2(0.2, 1)
+repeat_size = Vector2(140, 0)
+repeat_times = 59
+
+[node name="Sprite2D" type="Sprite2D" parent="Clouds/Clouds1"]
+position = Vector2(2365, 49)
+texture = ExtResource("4_s02qn")
+
+[node name="RockMontains" type="Node2D" parent="."]
+position = Vector2(0, 368)
+
+[node name="Montain2" type="Parallax2D" parent="RockMontains"]
+scroll_scale = Vector2(0.4, 1)
+repeat_size = Vector2(160, 0)
+repeat_times = 50
+
+[node name="Sprite2D" type="Sprite2D" parent="RockMontains/Montain2"]
+position = Vector2(2383, -57)
+texture = ExtResource("5_y01vj")
+centered = false
+
+[node name="Montain1" type="Parallax2D" parent="RockMontains"]
+scroll_scale = Vector2(0.6, 1)
+repeat_size = Vector2(320, 0)
+repeat_times = 25
+
+[node name="Sprite2D" type="Sprite2D" parent="RockMontains/Montain1"]
+position = Vector2(2089, -3)
+texture = ExtResource("6_gxxlt")
+centered = false
+
+[node name="Trees" type="Node2D" parent="."]
+position = Vector2(0, 368)
+
+[node name="Trees1" type="Parallax2D" parent="Trees"]
+scroll_scale = Vector2(0.8, 1)
+repeat_size = Vector2(240, 0)
+repeat_times = 31
+
+[node name="Sprite2D" type="Sprite2D" parent="Trees/Trees1"]
+position = Vector2(2351, 127)
+texture = ExtResource("7_um3yo")
 
 [node name="Background" type="TileMapLayer" parent="."]
 

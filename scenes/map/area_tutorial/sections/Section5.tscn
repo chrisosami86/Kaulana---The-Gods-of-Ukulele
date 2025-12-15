@@ -1,9 +1,15 @@
-[gd_scene load_steps=9 format=4 uid="uid://dj2okl7imb6kj"]
+[gd_scene load_steps=15 format=4 uid="uid://dj2okl7imb6kj"]
 
 [ext_resource type="Texture2D" uid="uid://cxrkasni83uxe" path="res://assets/sprites/world/gorund2.png" id="1_1h646"]
 [ext_resource type="Script" uid="uid://ckvnkns86v2kw" path="res://scenes/map/area_tutorial/sections/limit_camera_section.gd" id="1_n635d"]
+[ext_resource type="Texture2D" uid="uid://c8jp20mhxprs5" path="res://assets/sprites/world/MountainsLayers/sky.png" id="2_mhf66"]
 [ext_resource type="Script" uid="uid://dcpnphlb0gwid" path="res://scenes/map/area_tutorial/sections/transition_zone.gd" id="2_n635d"]
+[ext_resource type="Texture2D" uid="uid://by10iarixqk42" path="res://assets/sprites/world/Boss Background/05.png" id="3_m2qk4"]
 [ext_resource type="PackedScene" uid="uid://dqqjfgn3jftrp" path="res://scenes/Enemies/enemy_three.tscn" id="4_r503u"]
+[ext_resource type="Texture2D" uid="uid://cya8te81n0gx4" path="res://assets/sprites/world/Boss Background/04.png" id="4_rg5pe"]
+[ext_resource type="Texture2D" uid="uid://dhk7b7n7n8kmb" path="res://assets/sprites/world/Boss Background/03.png" id="5_vg3cr"]
+[ext_resource type="Texture2D" uid="uid://bysu3288x1s7h" path="res://assets/sprites/world/Boss Background/02.png" id="6_hckp6"]
+[ext_resource type="Texture2D" uid="uid://dvjhv6jku4l2b" path="res://assets/sprites/world/Boss Background/01.png" id="7_vvdfm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r503u"]
 texture = ExtResource("1_1h646")
@@ -72,6 +78,73 @@ size = Vector2(29, 154)
 [node name="Section5" type="Node2D"]
 script = ExtResource("1_n635d")
 camera_bounds = Rect2(100, -100, 2350, 384)
+
+[node name="Clouds" type="Node2D" parent="."]
+position = Vector2(0, 23)
+
+[node name="Sky" type="Parallax2D" parent="Clouds"]
+scroll_scale = Vector2(0, 0)
+scroll_offset = Vector2(0, -206)
+
+[node name="Sprite2D" type="Sprite2D" parent="Clouds/Sky"]
+position = Vector2(238.99998, 353)
+scale = Vector2(1.6593752, 1.6593752)
+texture = ExtResource("2_mhf66")
+
+[node name="Clouds2" type="Parallax2D" parent="Clouds"]
+scroll_scale = Vector2(0.1, 1)
+repeat_size = Vector2(480, 0)
+repeat_times = 59
+
+[node name="Sprite2D" type="Sprite2D" parent="Clouds/Clouds2"]
+position = Vector2(2365, 85)
+texture = ExtResource("3_m2qk4")
+
+[node name="RockMontains" type="Node2D" parent="."]
+position = Vector2(0, 23)
+
+[node name="Montain2" type="Parallax2D" parent="RockMontains"]
+scroll_scale = Vector2(0.4, 1)
+repeat_size = Vector2(480, 0)
+repeat_times = 50
+
+[node name="Sprite2D" type="Sprite2D" parent="RockMontains/Montain2"]
+position = Vector2(2383, -57)
+texture = ExtResource("4_rg5pe")
+centered = false
+
+[node name="Montain1" type="Parallax2D" parent="RockMontains"]
+scroll_scale = Vector2(0.6, 1)
+scroll_offset = Vector2(0, -47)
+repeat_size = Vector2(480, 0)
+repeat_times = 25
+
+[node name="Sprite2D" type="Sprite2D" parent="RockMontains/Montain1"]
+position = Vector2(2089, -3)
+texture = ExtResource("5_vg3cr")
+centered = false
+
+[node name="Trees" type="Node2D" parent="."]
+position = Vector2(0, 23)
+
+[node name="TreeTronco" type="Parallax2D" parent="Trees"]
+scroll_scale = Vector2(0.8, 1)
+repeat_size = Vector2(480, 0)
+repeat_times = 19
+
+[node name="Sprite2D" type="Sprite2D" parent="Trees/TreeTronco"]
+position = Vector2(1872, 85)
+texture = ExtResource("6_hckp6")
+
+[node name="Trees1" type="Parallax2D" parent="Trees"]
+scroll_scale = Vector2(0.8, 1)
+scroll_offset = Vector2(0, -42)
+repeat_size = Vector2(480, 0)
+repeat_times = 18
+
+[node name="Sprite2D" type="Sprite2D" parent="Trees/Trees1"]
+position = Vector2(2351, 127)
+texture = ExtResource("7_vvdfm")
 
 [node name="Background" type="TileMapLayer" parent="."]
 
