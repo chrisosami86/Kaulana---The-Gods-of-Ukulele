@@ -243,15 +243,19 @@ debug_color = Color(0.4816472, 0.5846105, 0.16151041, 0.41960785)
 
 [node name="AudioFly" type="AudioStreamPlayer2D" parent="Audios"]
 stream = ExtResource("4_ivenk")
+bus = &"SFX_Enemies"
 
 [node name="AudioDamage" type="AudioStreamPlayer2D" parent="Audios"]
 stream = ExtResource("5_sub2n")
+bus = &"SFX_Enemies"
 
 [node name="SFXDamage" type="AudioStreamPlayer2D" parent="Audios"]
 stream = ExtResource("6_1gyo6")
+bus = &"SFX_Enemies"
 
 [node name="AudioDie" type="AudioStreamPlayer2D" parent="Audios"]
 stream = ExtResource("7_xs232")
+bus = &"SFX_Enemies"
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

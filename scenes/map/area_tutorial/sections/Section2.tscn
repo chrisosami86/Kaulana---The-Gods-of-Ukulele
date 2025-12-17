@@ -291,7 +291,7 @@ collision_layer = 128
 collision_mask = 2
 script = ExtResource("3_fnxdr")
 next_section_path = "res://scenes/map/area_tutorial/sections/Section3.tscn"
-player_spawn_position = Vector2(120, 220)
+player_spawn_position = Vector2(170, 220)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionZone2"]
 position = Vector2(3824, 169)

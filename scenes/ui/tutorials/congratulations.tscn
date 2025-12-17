@@ -37,10 +37,9 @@ text = "Gracias por Jugar"
 [node name="Label2" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Gracias por jugar este pre-Alpha, 
-pronto vendrán mejoras como sonidos,
-fondos, partículas y más variedad de
-enemigos.
+text = "Gracias por jugar este Alpha, 
+pronto vendrán mejoras como partículas
+y más variedad de enemigos.
 
 Deja tus comentarios en el Discord, dime que
 te pareció y déjame ideas para mejorar.

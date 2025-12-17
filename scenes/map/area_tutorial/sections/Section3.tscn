@@ -292,7 +292,7 @@ collision_layer = 128
 collision_mask = 2
 script = ExtResource("4_2l744")
 next_section_path = "res://scenes/map/area_tutorial/sections/Section2.tscn"
-player_spawn_position = Vector2(3700, 220)
+player_spawn_position = Vector2(3650, 220)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionZone"]
 position = Vector2(64, 166)
@@ -304,7 +304,7 @@ collision_layer = 128
 collision_mask = 2
 script = ExtResource("4_2l744")
 next_section_path = "res://scenes/map/area_tutorial/sections/Section5.tscn"
-player_spawn_position = Vector2(96, 240)
+player_spawn_position = Vector2(170, 240)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionZone2"]
 position = Vector2(3108, 1175)
@@ -316,7 +316,7 @@ collision_layer = 128
 collision_mask = 2
 script = ExtResource("4_2l744")
 next_section_path = "res://scenes/map/area_tutorial/sections/Section4.tscn"
-player_spawn_position = Vector2(3620, 550)
+player_spawn_position = Vector2(3580, 550)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransitionZone3"]
 position = Vector2(64, 1198)

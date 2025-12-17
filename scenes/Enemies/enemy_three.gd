@@ -13,6 +13,7 @@ var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var audio_die: AudioStreamPlayer2D = $Audios/AudioDie
 @onready var sfx_rock: AudioStreamPlayer2D = $Audios/SFXRock
 @onready var sfx_damage: AudioStreamPlayer2D = $Audios/SFXDamage
+@onready var life_boss: TextureProgressBar = $CanvasLayer/LifeBoss
 
 
 # ❤️ Sistema de vida
@@ -52,6 +53,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	velocity.y += gravity * delta
+	boss_velocity()
+	life_boss.value = current_health
 	match current_enemy_state:
 		State.IDLE:
 			# No moverse
@@ -87,6 +90,11 @@ func _physics_process(delta: float) -> void:
 			velocity.x = 0
 			
 	move_and_slide()
+
+func boss_velocity():
+	if current_health <= 50:
+		move_speed = 160
+		cooldown_time = 1.0
 
 func chase_player():
 	# Calcular dirección hacia el jugador
@@ -224,6 +232,10 @@ func start_blink() -> void:
 
 # 💀 Morir
 func die() -> void:
+	var audio_boss:AudioStreamPlayer2D = get_tree().get_first_node_in_group("main").get_node("BossAudio")
+	var audio_main:AudioStreamPlayer2D = get_tree().get_first_node_in_group("main").get_node("MainAudio")
+	audio_boss.stream_paused = true
+	audio_main.stream_paused = false
 	audio_die.play()
 	change_state(State.DEATH)
 	print("¡Golem eliminado!")

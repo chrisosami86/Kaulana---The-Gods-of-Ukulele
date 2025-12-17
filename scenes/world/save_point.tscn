@@ -1,7 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://da0dl6whuyhn6"]
+[gd_scene load_steps=20 format=3 uid="uid://da0dl6whuyhn6"]
 
 [ext_resource type="Script" uid="uid://b7spesc5uk5xh" path="res://scenes/world/save_point.gd" id="1_j1jcv"]
 [ext_resource type="Texture2D" uid="uid://dw7brnn2tpwp5" path="res://assets/sprites/world/save_idle.png" id="1_mtttk"]
+[ext_resource type="AudioStream" uid="uid://iu5gbg5a2kwa" path="res://assets/resources/audios/SFX/save_point/save_ok.mp3" id="3_gkk6c"]
+[ext_resource type="AudioStream" uid="uid://0q0ekppvdhni" path="res://assets/resources/audios/SFX/save_point/health_save.mp3" id="4_k1hsw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mtttk"]
 radius = 41.0
@@ -130,6 +132,14 @@ tree_root = SubResource("AnimationNodeStateMachine_mtttk")
 anim_player = NodePath("../AnimationPlayer")
 parameters/save_idle/TimeScale/scale = 0.7999999999999972
 parameters/save_ok/TimeScale/scale = 0.7999999999999972
+
+[node name="SaveOkAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_gkk6c")
+bus = &"SFX_World"
+
+[node name="HealthSaveAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_k1hsw")
+bus = &"SFX_World"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

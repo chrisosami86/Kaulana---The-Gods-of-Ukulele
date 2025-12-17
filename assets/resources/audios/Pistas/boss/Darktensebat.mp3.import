@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Darktensebat.mp3-8f92dc46855e3ce41b11ab269dcf
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

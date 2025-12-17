@@ -18,6 +18,11 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameState="*res://autoloads/game_state.gd"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+
+[dialogue_manager]
+
+runtime/balloon_path="res://scenes/dialogues/balloon.tscn"
 
 [display]
 
@@ -29,7 +34,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/gut/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/gut/plugin.cfg")
 
 [global_group]
 
@@ -112,6 +117,10 @@ move_up={
 ]
 }
 
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("res://Dialogues/boss_dialogue.dialogue")
+
 [layer_names]
 
 2d_render/layer_1="player"
@@ -128,3 +137,5 @@ move_up={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

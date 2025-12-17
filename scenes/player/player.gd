@@ -17,6 +17,7 @@ var health = 3
 @onready var audio_die: AudioStreamPlayer2D = $AudioDie
 @onready var sfx_damage: AudioStreamPlayer2D = $SFXDamage
 @onready var sfx_attack: AudioStreamPlayer2D = $SFXAttack
+@onready var get_item_audio: AudioStreamPlayer2D = $GetItemAudio
 
 
 #Referencia al nodo de animacion para poder
@@ -44,6 +45,12 @@ func _ready():
 #Funcion para detectar cambios en las fisicas
 #como velocidades, colisiones, etc
 func _physics_process(delta: float) -> void:
+	if GameState.is_dialogue_active:
+		velocity = Vector2.ZERO
+		update_animations()
+		move_and_slide()
+		return
+		
 	# 🛑 Si está muerto, solo aplicar gravedad y salir
 	if not is_alive:
 		velocity.y += gravity * delta
@@ -302,6 +309,7 @@ func _on_hurt_box_body_entered(body: Node2D) -> void:
 		return
 	
 	if body.is_in_group('i_heart'):
+		get_item_audio.play()
 		if health < max_health:  # ← Usar max_health en lugar de 3
 			get_healt(1)
 			update_hud()

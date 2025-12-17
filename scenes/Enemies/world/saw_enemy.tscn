@@ -1,10 +1,26 @@
-[gd_scene load_steps=12 format=3 uid="uid://bgr4blas06loa"]
+[gd_scene load_steps=13 format=3 uid="uid://bgr4blas06loa"]
 
 [ext_resource type="Texture2D" uid="uid://c6qeqarvbkyh" path="res://assets/sprites/enemies/trap/saw.png" id="1_dij16"]
 [ext_resource type="Script" uid="uid://b3a8dw3k5srx7" path="res://saw_enemy.gd" id="1_u3u6a"]
+[ext_resource type="AudioStream" uid="uid://b3w86og65ryad" path="res://assets/resources/audios/SFX/saw/saw.mp3" id="3_u5kfn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u5kfn"]
 radius = 18.027756
+
+[sub_resource type="Animation" id="Animation_bcnu1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_nua6o"]
 resource_name = "idle"
@@ -21,21 +37,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
-}
-
-[sub_resource type="Animation" id="Animation_bcnu1"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_swhcn"]
@@ -93,5 +94,10 @@ parameters/idle/TimeScale/scale = 0.7999999999999972
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="SawAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_u5kfn")
+max_distance = 300.0
+bus = &"SFX_Enemies"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

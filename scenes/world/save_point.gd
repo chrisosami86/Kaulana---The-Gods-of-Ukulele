@@ -4,6 +4,8 @@ extends Area2D
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var state_machine = animation_tree["parameters/playback"]
+@onready var save_ok_audio: AudioStreamPlayer2D = $SaveOkAudio
+@onready var health_save_audio: AudioStreamPlayer2D = $HealthSaveAudio
 
 var is_in_save_point = false
 var is_saving = false
@@ -19,6 +21,7 @@ func saveGame():
 		return
 	
 	if Input.is_action_just_pressed("move_up") and not is_saving:
+		save_ok_audio.play()
 		is_saving = true
 		state_machine.travel("save_ok")
 		
@@ -105,6 +108,7 @@ func _map_file_name_to_section_name(file_name: String) -> String:
 func _on_area_entered(area: Area2D) -> void:
 	if area.name == "HurtBox":
 		is_in_save_point = true
+		health_save_audio.play()
 
 func _on_area_exited(area: Area2D) -> void:
 	if area.name == "HurtBox":

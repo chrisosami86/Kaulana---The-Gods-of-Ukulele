@@ -1,5 +1,6 @@
 extends Node
 
+var is_dialogue_active = false
 # Ruta del archivo de guardado (usaremos user://)
 #var save_file_path: String = "res://save_data/savegame.json"
 var save_file_path: String = "user://savegame.json"

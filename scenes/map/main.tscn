@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmuhh4ffc41xv"]
+[gd_scene load_steps=6 format=3 uid="uid://bmuhh4ffc41xv"]
 
 [ext_resource type="Script" uid="uid://bg3hvpfhq8awl" path="res://scenes/map/main.gd" id="1_4tf7g"]
 [ext_resource type="PackedScene" uid="uid://ciiq0auj6fod4" path="res://scenes/player/player.tscn" id="2_5n0wg"]
 [ext_resource type="PackedScene" uid="uid://bps4e1143ffge" path="res://scenes/ui/hud.tscn" id="3_cn66n"]
 [ext_resource type="AudioStream" uid="uid://c3ieq5o7tgtnr" path="res://assets/resources/audios/Pistas/world/Darkatmospher.mp3" id="4_cn66n"]
+[ext_resource type="AudioStream" uid="uid://bpcv7k87ehwll" path="res://assets/resources/audios/Pistas/boss/Darktensebat.mp3" id="5_g13t0"]
 
 [node name="Main" type="Node2D" groups=["main"]]
 script = ExtResource("1_4tf7g")
@@ -32,3 +33,9 @@ position = Vector2(964, 54)
 stream = ExtResource("4_cn66n")
 autoplay = true
 max_distance = 6000.0
+bus = &"Music"
+
+[node name="BossAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_g13t0")
+max_distance = 6000.0
+bus = &"Music"
