@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://dgm20ufql7vsm"]
+[gd_scene load_steps=43 format=4 uid="uid://dgm20ufql7vsm"]
 
 [ext_resource type="Script" uid="uid://ckvnkns86v2kw" path="res://scenes/map/area_tutorial/sections/limit_camera_section.gd" id="1_kmclc"]
 [ext_resource type="Texture2D" uid="uid://blt44my2pyssf" path="res://assets/sprites/world/ground.png" id="1_uwo1q"]
@@ -27,6 +27,7 @@
 [ext_resource type="Script" uid="uid://bq7vpg8ahsp17" path="res://scenes/map/area_tutorial/sections/heal_tutorial.gd" id="13_db6kh"]
 [ext_resource type="PackedScene" uid="uid://b3nu811ytoryu" path="res://scenes/ui/tutorials/health_tutorial.tscn" id="14_nj1d7"]
 [ext_resource type="PackedScene" uid="uid://ymvyw5wkv3fx" path="res://scenes/items/heart_item.tscn" id="15_dmib6"]
+[ext_resource type="AudioStream" uid="uid://ce8bw8qovb70j" path="res://assets/resources/audios/SFX/tutorials/show_tutorial.mp3" id="28_vwvb1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tg4cv"]
 texture = ExtResource("7_4p3pk")
@@ -453,6 +454,7 @@ shape = SubResource("CircleShape2D_o7lat")
 visible = false
 
 [node name="HealTutorial" type="Area2D" parent="Tutorials"]
+process_mode = 3
 collision_layer = 64
 collision_mask = 2
 script = ExtResource("13_db6kh")
@@ -485,6 +487,12 @@ position = Vector2(609, -388)
 
 [node name="HeartItem2" parent="Items" instance=ExtResource("15_dmib6")]
 position = Vector2(3298, -243)
+
+[node name="AudioTutorial" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("28_vwvb1")
+bus = &"SFX_World"
+area_mask = 0
 
 [connection signal="area_entered" from="CameraTrigger" to="." method="_on_camera_trigger_area_entered"]
 [connection signal="area_entered" from="CameraTrigger2" to="." method="_on_camera_trigger_area_entered"]

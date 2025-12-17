@@ -1,5 +1,6 @@
 extends Area2D
 @onready var attack_tutorial: CanvasLayer = $"../AttackTutorial"
+@onready var audio_tutorial: AudioStreamPlayer2D = $"../../AudioTutorial"
 
 func _ready() -> void:
 	if GameState.should_show_tutorial("attack"):
@@ -8,6 +9,7 @@ func _ready() -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.name == "HurtBox":
+		audio_tutorial.play()
 		attack_tutorial.visible = true
 		GameState.mark_tutorial_shown("attack")
 		await get_tree().process_frame
