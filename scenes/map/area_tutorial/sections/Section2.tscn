@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://nlgpvls2crxw"]
+[gd_scene load_steps=27 format=4 uid="uid://nlgpvls2crxw"]
 
 [ext_resource type="Texture2D" uid="uid://cxrkasni83uxe" path="res://assets/sprites/world/gorund2.png" id="1_7t51w"]
 [ext_resource type="Script" uid="uid://ckvnkns86v2kw" path="res://scenes/map/area_tutorial/sections/limit_camera_section.gd" id="1_fnxdr"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://b02ey5ctioae1" path="res://assets/sprites/world/arbusto.png" id="8_jpmtl"]
 [ext_resource type="PackedScene" uid="uid://ymvyw5wkv3fx" path="res://scenes/items/heart_item.tscn" id="9_7x5yc"]
 [ext_resource type="Texture2D" uid="uid://bs3s1m3rw7jct" path="res://assets/sprites/world/Fondo.png" id="9_15at7"]
+[ext_resource type="AudioStream" uid="uid://ce8bw8qovb70j" path="res://assets/resources/audios/SFX/tutorials/show_tutorial.mp3" id="18_saibx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rnsuc"]
 texture = ExtResource("8_jpmtl")
@@ -394,6 +395,12 @@ position = Vector2(2481, -101)
 
 [node name="HeartItem3" parent="Items" instance=ExtResource("9_7x5yc")]
 position = Vector2(3377, 279)
+
+[node name="AudioTutorial" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("18_saibx")
+max_distance = 7000.0
+bus = &"SFX_World"
 
 [connection signal="area_entered" from="CameraTrigger" to="." method="_on_camera_trigger_area_entered"]
 [connection signal="area_entered" from="CameraTrigger2" to="." method="_on_camera_trigger_area_entered"]

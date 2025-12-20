@@ -491,6 +491,7 @@ position = Vector2(3298, -243)
 [node name="AudioTutorial" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
 stream = ExtResource("28_vwvb1")
+max_distance = 7000.0
 bus = &"SFX_World"
 area_mask = 0
 

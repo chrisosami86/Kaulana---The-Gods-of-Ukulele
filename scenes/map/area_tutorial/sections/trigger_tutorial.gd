@@ -10,6 +10,7 @@ func _ready() -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
+	audio_tutorial.play()
 	if area.name == "HurtBox":
 		audio_tutorial.play()
 		GameState.mark_tutorial_shown("jump")

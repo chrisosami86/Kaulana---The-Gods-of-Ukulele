@@ -1,6 +1,7 @@
 extends Area2D
 
 @onready var save_tutorial: CanvasLayer = $"../SaveTutorial"
+@onready var audio_tutorial: AudioStreamPlayer2D = $"../../AudioTutorial"
 
 
 func _ready() -> void:
@@ -10,6 +11,7 @@ func _ready() -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
+	audio_tutorial.play()
 	if area.name == "HurtBox":
 		GameState.mark_tutorial_shown("save")
 		save_tutorial.visible = true

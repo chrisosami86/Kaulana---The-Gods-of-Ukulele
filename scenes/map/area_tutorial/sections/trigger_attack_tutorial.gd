@@ -8,8 +8,8 @@ func _ready() -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
+	audio_tutorial.play()
 	if area.name == "HurtBox":
-		audio_tutorial.play()
 		attack_tutorial.visible = true
 		GameState.mark_tutorial_shown("attack")
 		await get_tree().process_frame

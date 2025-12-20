@@ -1,6 +1,7 @@
 extends Area2D
 
 @onready var crouched_attack: CanvasLayer = $"../CrouchedAttack"
+@onready var audio_tutorial: AudioStreamPlayer2D = $"../../AudioTutorial"
 
 
 func _ready() -> void:
@@ -10,6 +11,7 @@ func _ready() -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
+	audio_tutorial.play()
 	if area.name == "HurtBox":
 		GameState.mark_tutorial_shown("crouched")
 		crouched_attack.visible = true
